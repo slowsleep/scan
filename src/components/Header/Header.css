@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.left {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 26px;
+    margin: 0 1em 0 0;
+    background-color: var(--green);
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    column-gap: 3em;
+}
+
+.nav__item {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav__item:hover {
+    text-decoration: underline;
+}

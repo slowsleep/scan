@@ -1,4 +1,21 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Regular.ttf");
+}
+
 body {
   margin: 0;
   background-color: white;
+  font-family: "Inter";
+}
+
+:root {
+  /* main colors */
+  --green: #029491;
+  /* also black and white */
+
+  /* additional colors */
+  --yellow: #FFB64F;
+  --light-green: #7CE3E1;
+  --blue:#5970FF;
 }
