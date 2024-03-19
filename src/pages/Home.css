@@ -1,0 +1,42 @@
+
+
+h1 {
+    font-family: "Ferry";
+    font-size: 60px;
+
+}
+
+h2 {
+    font-family: "Ferry";
+    font-size: 54px;
+
+}
+
+.desc {
+    display: flex;
+    flex-direction: row;
+    margin: 5em 0;
+}
+
+.desc__left {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.desc__left__title {
+    margin: 0;
+    line-height: 72px;
+}
+
+.desc__left__text {
+    width: 75%;
+    font-size: 20px;
+    line-height: 24.2px;
+    margin-bottom: 3em;
+}
+
+.desc__left__btn {
+    font-size: 22px;
+    width: 45%;
+}

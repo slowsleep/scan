@@ -3,21 +3,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 2em;
+    padding: 0 4em;
     color: white;
     align-items: center;
 }
 
-.footer__left {
+.footer__right {
     display: flex;
     flex-direction: column;
     text-align: right;
 }
 
-.footer__left__info {
+.footer__right__info {
     line-height: 5px;
 }
 
-.footer__left__copyright {
+.footer__right__copyright {
     font-size: 12px;
 }

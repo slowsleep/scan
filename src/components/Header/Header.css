@@ -3,10 +3,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2em;
+    padding: 0 4em;
 }
 
-.header__left {
+.header__right {
     display: flex;
     flex-direction: row;
 }

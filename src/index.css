@@ -3,6 +3,12 @@
   src: url("./assets/fonts/Inter-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Ferry";
+  src: url("./assets/fonts/ferry_black.otf");
+  font-weight: 900;
+}
+
 body {
   margin: 0;
   background-color: white;
@@ -19,4 +25,8 @@ body {
   --yellow: #FFB64F;
   --light-green: #7CE3E1;
   --blue:#5970FF;
+}
+
+.main {
+  padding: 0 4em;
 }
