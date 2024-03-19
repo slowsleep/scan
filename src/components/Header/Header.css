@@ -6,7 +6,7 @@
     padding: 0 2em;
 }
 
-.left {
+.header__left {
     display: flex;
     flex-direction: row;
 }
@@ -18,7 +18,7 @@
     background-color: var(--green);
 }
 
-.nav {
+.header__nav {
     display: flex;
     flex-direction: row;
     column-gap: 3em;

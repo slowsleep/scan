@@ -1,0 +1,23 @@
+.footer {
+    background-color: var(--green);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2em;
+    color: white;
+    align-items: center;
+}
+
+.footer__left {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.footer__left__info {
+    line-height: 5px;
+}
+
+.footer__left__copyright {
+    font-size: 12px;
+}
