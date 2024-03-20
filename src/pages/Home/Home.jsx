@@ -1,20 +1,20 @@
-import tables from "../assets/img/tables.png";
-import bubbles from "../assets/img/bubbles.png";
-import timer from "../assets/img/timer.svg";
-import search from "../assets/img/search.svg";
-import protect from "../assets/img/protect.svg";
-import Button from "../components/Button/Button";
+import tables from "../../assets/img/tables.png";
+import bubbles from "../../assets/img/bubbles.png";
+import timer from "../../assets/img/timer.svg";
+import search from "../../assets/img/search.svg";
+import protect from "../../assets/img/protect.svg";
+import Button from "../../components/Button/Button";
 import "./Home.css";
-import InfoCard from "../components/InfoCard/InfoCard";
-import TariffСard from "../components/TariffCard/TariffСard";
+import InfoCard from "../../components/InfoCard/InfoCard";
+import TariffСard from "../../components/TariffCard/TariffСard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import CustomNextArrow from "../components/SlickSlider/CustomNextArrow";
-import CustomPrevArrow from "../components/SlickSlider/CustomPrevArrow";
-import lamp from "../assets/img/lamp.svg";
-import target from "../assets/img/target-small.svg";
-import laptop from "../assets/img/laptop.svg";
+import CustomNextArrow from "../../components/SlickSlider/CustomNextArrow";
+import CustomPrevArrow from "../../components/SlickSlider/CustomPrevArrow";
+import lamp from "../../assets/img/lamp.svg";
+import target from "../../assets/img/target-small.svg";
+import laptop from "../../assets/img/laptop.svg";
 
 const Home = () => {
     let sliderSettings = {
