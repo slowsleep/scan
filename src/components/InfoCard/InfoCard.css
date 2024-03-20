@@ -1,0 +1,12 @@
+.infocard {
+    box-shadow: 0px 0px 20px 0px #00000033;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1.5em;
+    height: 12em;
+}
+
+.infocard > p {
+    font-size: 18px;
+    line-height: 21.78px;
+}
