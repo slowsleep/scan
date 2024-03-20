@@ -1,0 +1,92 @@
+.tariff-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px 0px #00000033;
+    margin: 1.5em;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.tariff-card__header {
+    display: flex;
+    flex-direction: row;
+    padding: 2em .5em 1em 2em;
+    border-radius: 10px 10px 0 0;
+    justify-content: space-between;
+    height: 6em;
+}
+
+.tariff-card__header__left {
+    display: flex;
+    flex-direction: column;
+}
+
+.tariff-card__header__left>h3,
+.tariff-card__header__left>p {
+    margin: .2em 0;
+}
+
+.tariff-card__header__left>h3 {
+    font-size: 30px;
+}
+
+.tariff-card__header__left>p {
+    font-size: 18px;
+}
+
+.tariff-card__content {
+    padding: 1em 1em 1em 2em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    justify-content: space-between;
+}
+
+.current {
+    background-color: #3BA5E0;
+    color: white;
+    border-radius: 10px;
+    float: right;
+    padding: .2em;
+    font-size: 14px;
+}
+
+.tariff-card__content__price {
+    font-size: 30px;
+}
+
+.tariff-card__content__oldprice {
+    font-size: 20px;
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+.tariff-card__content__price-info {
+    font-size: 18px;
+}
+
+.tariff-card__content__price::after,
+.tariff-card__content__oldprice::after {
+    content: ' ₽';
+}
+
+.tariff-card__content__ul-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tariff-card__content__li {
+    list-style-image: url("../../assets/img/green-check-mark.svg");
+    font-size: 18px;
+}
+
+.tariff-card__footer__btn {
+    width: 100%;
+    font-size: 20px;
+}
+
+
+.tariff-card__footer {
+    margin: 1em 2em;
+}
+

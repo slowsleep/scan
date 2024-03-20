@@ -47,20 +47,32 @@ h2 {
     margin: 4em 2em;
 }
 
-.slick-arrow.slick-next, .slick-arrow.slick-prev{
-height: 25px;
-width: 25px;
-display: flex;
-align-items: center;
-justify-content: center;
-opacity: 0.7;
+.slick-arrow.slick-next,
+.slick-arrow.slick-prev {
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
 }
 
-.slick-arrow.slick-next:hover, .slick-arrow.slick-prev:hover{
-    opacity:1;
+.slick-arrow.slick-next:hover,
+.slick-arrow.slick-prev:hover {
+    opacity: 1;
 }
 
-.slick-prev::before, .slick-next::before{
-   display:none;
+.slick-prev::before,
+.slick-next::before {
+    display: none;
 }
 
+.tariffs {
+    margin-top: 8em;
+}
+
+.tarrif-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

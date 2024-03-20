@@ -6,12 +6,15 @@ import protect from "../assets/img/protect.svg";
 import Button from "../components/Button/Button";
 import "./Home.css";
 import InfoCard from "../components/InfoCard/InfoCard";
+import TariffСard from "../components/TariffCard/TariffСard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import CustomNextArrow from "../components/SlickSlider/CustomNextArrow";
 import CustomPrevArrow from "../components/SlickSlider/CustomPrevArrow";
-
+import lamp from "../assets/img/lamp.svg";
+import target from "../assets/img/target-small.svg";
+import laptop from "../assets/img/laptop.svg";
 
 const Home = () => {
     let sliderSettings = {
@@ -20,7 +23,7 @@ const Home = () => {
         slidesToShow: 3,
         slidesToScroll: 3,
         nextArrow: <CustomNextArrow />,
-        prevArrow: <CustomPrevArrow />
+        prevArrow: <CustomPrevArrow />,
     };
 
     return (
@@ -66,7 +69,53 @@ const Home = () => {
                     width={"97%"}
                 />
             </section>
-            <section className="tariffs"></section>
+            <section className="tariffs">
+                <h2>наши тарифы</h2>
+                <div className="tarrif-list">
+                    <TariffСard
+                        title="Beginner"
+                        description="Для небольшого исследования"
+                        icon={lamp}
+                        price="799"
+                        oldPrice="1200"
+                        priceInfo="или 150 ₽/мес. при рассрочке на 24 мес."
+                        tariffIncludes={[
+                            "Безлимитная история запросов",
+                            "Безопасная сделка",
+                            "Поддержка 24/7",
+                        ]}
+                        current={true}
+                        color="yellow"
+                    />
+                    <TariffСard
+                        title="Pro"
+                        description="Для HR и фрилансеров"
+                        icon={target}
+                        price="1 299"
+                        oldPrice="2 600"
+                        priceInfo="или 279 ₽/мес. при рассрочке на 24 мес."
+                        tariffIncludes={[
+                            "Все пункты тарифа Beginner",
+                            "Экспорт истории",
+                            "Рекомендации по приоритетам",
+                        ]}
+                        color="light-green"
+                    />
+                    <TariffСard
+                        title="Business"
+                        description="Для корпоративных клиентов"
+                        icon={laptop}
+                        price="2 379"
+                        oldPrice="3 700"
+                        tariffIncludes={[
+                            "Все пункты тарифа Pro",
+                            "Безлимитное количество запросов",
+                            "Приоритетная поддержка",
+                        ]}
+                        color="black"
+                    />
+                </div>
+            </section>
         </>
     );
 };
