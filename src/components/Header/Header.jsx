@@ -15,7 +15,9 @@ const Header = () => {
             <div className="header__right">
                 <Button title="Зарегистрироваться" size="small" color="white" />
                 <div className="vertical-line" ></div>
-                <Button title="Войти" size="small" color="light-green" />
+                <Link to="/login">
+                    <Button title="Войти" size="small" color="light-green" />
+                </Link>
             </div>
         </header>
     );
