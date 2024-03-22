@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import tables from "../../assets/img/tables.png";
 import bubbles from "../../assets/img/bubbles.png";
 import timer from "../../assets/img/timer.svg";
@@ -15,6 +16,7 @@ import CustomPrevArrow from "../../components/SlickSlider/CustomPrevArrow";
 import lamp from "../../assets/img/lamp.svg";
 import target from "../../assets/img/target-small.svg";
 import laptop from "../../assets/img/laptop.svg";
+
 
 const Home = () => {
     let sliderSettings = {
@@ -38,12 +40,14 @@ const Home = () => {
                         Комплексный анализ публикаций, получение данных в
                         формате PDF на электронную почту.
                     </p>
-                    <Button
-                        className="desc__left__btn"
-                        title="Запросить данные"
-                        size="large"
-                        color="blue"
-                    />
+                    <Link to="/search">
+                        <Button
+                            className="desc__left__btn"
+                            title="Запросить данные"
+                            size="large"
+                            color="blue"
+                        />
+                    </Link>
                 </div>
                 <img src={tables} alt="Человек и таблицы" width={"70%"} />
             </section>

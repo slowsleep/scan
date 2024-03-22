@@ -2,6 +2,7 @@ import key from "../../assets/img/key.png";
 import "./SignIn.css";
 import LabelInput from "../../components/LabelInput/LabelInput";
 import Button from "../../components/Button/Button";
+import Form from "../../components/Form/Form";
 import google from "../../assets/img/google.svg";
 import facebook from "../../assets/img/facebook.svg";
 import yandex from "../../assets/img/yandex.svg";
@@ -23,15 +24,15 @@ const SignIn = () => {
                 />
             </div>
 
-            <form className="login__form">
+            <Form className="login__form">
                 <div className="login__form__header">
                     <Button className="login_form__header__button" size="large" title="Войти" />
                     <Button className="login_form__header__button" size="large" title="Зарегистрироваться" disabled={true} />
                 </div>
                 <div className="login__form__content">
                     <div className="login__form__content__inputs">
-                        <LabelInput label="Логин или номер телефона:" type="text" name="login" />
-                        <LabelInput label="Пароль:" type="password" name="password" />
+                        <LabelInput className="login__form__content__inputs__label-input" label="Логин или номер телефона:" type="text" name="login" />
+                        <LabelInput className="login__form__content__inputs__label-input" label="Пароль:" type="password" name="password" />
                     </div>
                     <div className="login__form__content__buttons">
                         <Button className="login__form__content__buttons__button" title="Войти" color="blue" size="large" />
@@ -47,7 +48,7 @@ const SignIn = () => {
                     </div>
                 </div>
                 <img className="lock" src={lock} alt="замок" />
-            </form>
+            </Form>
         </div>
     );
 };

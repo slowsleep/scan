@@ -1,0 +1,9 @@
+.input-date {
+    background: url("../../assets/img/arrow-down.svg") no-repeat scroll right 8% top 50%;
+    padding-right: 2em;
+}
+
+.input-date[type="date"] {
+    background: none;
+    padding: .8em 1.5em;
+}

@@ -30,3 +30,9 @@ body {
 .main {
   padding: 0 4em;
 }
+
+
+.label--required::after {
+  content: ' *';
+  font-size: 25px;
+}

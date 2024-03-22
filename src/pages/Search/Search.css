@@ -1,0 +1,131 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3em;
+}
+
+.search__left {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.search__left > h1 {
+    font-size: 40px;
+    width: 70%;
+}
+
+.search__left > p {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.search__right {
+    width: 35%;
+}
+
+.search__left__form {
+    padding: 3em 3em 0 3em;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin-top: 3em;
+}
+
+.search__left__form__left, .search__left__form__right {
+    display: flex;
+    flex-direction: column;
+}
+
+.search__left__form__left {
+    row-gap: 2.5em;
+    margin-bottom: 3em;
+    width: 48%;
+}
+
+.search__input--border {
+    border: 1px solid #C7C7C7;
+}
+
+.search__left__form__left__label-input {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.search__left__form__left__label {
+    font-size: 18px;
+}
+
+.search__left__form__left__input {
+    text-align: center;
+    padding: 1em;
+    font-size: 14px;
+    width: 70%;
+}
+
+.search__left__form__left__dates {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.search__left__form__left__inputrow {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.5em;
+}
+
+.search__left__form__right {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    justify-content: space-between;
+    width: 52%;
+}
+
+.search__left__form__right__label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 18px;
+    color: gray;
+}
+
+.search__left__form__right__label--checked {
+    color: black;
+}
+
+.search__left__form__right__label__input {
+    margin-top: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 1em;
+}
+
+.search__left__form__right__footer {
+    align-self: end;
+    margin-top: 9em;
+    width: 75%;
+}
+
+.search__left__form__right__footer__button {
+    width: 100%;
+    font-size: 22px;
+}
+
+.search__left__form__left__select {
+    box-shadow: 0px 0px 20px 0px #0000000D;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1em;
+    text-align: center;
+    width: 78%;
+    font-size: 14px;
+    margin-top: 1em;
+}
+
