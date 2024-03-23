@@ -1,0 +1,39 @@
+.document-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px 0px #00000033;
+    border-radius: 10px;
+    padding: 1em 2em 2em 2em;
+    font-size: 16px;
+}
+
+.document-card__header {
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    column-gap: 1em;
+}
+
+.document-card__header > a {
+    cursor: pointer;
+}
+
+.document-card__header > a:hover {
+    text-decoration: underline;
+}
+
+.document-card__content > h1 {
+    font-family: "Inter";
+    font-size: 26px;
+}
+
+.document-card__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: gray;
+}
+
+.document-card__content > p {
+    color: gray;
+}
