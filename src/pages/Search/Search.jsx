@@ -40,8 +40,13 @@ const Search = () => {
         <div className="search">
             <div className="search__left">
                 <h1>Найдите необходимые данные в пару кликов.</h1>
-                <p>Задайте параметры поиска.</p>
-                <p>Чем больше заполните, тем точнее поиск</p>
+                <div className="search__left__block">
+                    <div className="search__left__block__text">
+                        <p>Задайте параметры поиска.</p>
+                        <p>Чем больше заполните, тем точнее поиск</p>
+                    </div>
+                    <img className="search__left__block__image" src={document} alt="Документ" />
+                </div>
                 <Form className="search__left__form">
                     <div className="search__left__form__left">
                         <LabelInput
@@ -101,12 +106,12 @@ const Search = () => {
                     </div>
                 </Form>
             </div>
-            <div className="search__right" style={{position: "relative"}}>
-                <div style={{ display: "flex", flexDirection: "row", position: "relative" }}>
-                    <img style={{ width: "100px", position: "absolute", left: "1em", top: "7em" }} src={document} alt="" />
-                    <img style={{ width: "150px", position: "absolute", right: "3em", top: "8em" }}  src={folders} alt="" />
+            <div className="search__right">
+                <div className="search__right__img-files">
+                    <img src={document} alt="Документ" />
+                    <img src={folders} alt="Папки" />
                 </div>
-                <img style={{width: "90%", position: "absolute", bottom: "0", left: "6em"}} src={racket} alt="" />
+                <img className="search__right__img-people" src={racket} alt="Человек ищет" />
             </div>
         </div>
     );

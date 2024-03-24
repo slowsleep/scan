@@ -16,14 +16,51 @@
     width: 70%;
 }
 
-.search__left > p {
+.search__left__block {
+    display: flex;
+    flex-direction: row;
+}
+
+.search__left__block__text > p {
     font-size: 20px;
     margin: 0;
     padding: 0;
 }
 
+.search__left__block__image {
+    display: none;
+}
+
 .search__right {
     width: 35%;
+    position: relative;
+}
+
+.search__right__img-files {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.search__right__img-files > img:nth-child(1) {
+    width: 100px;
+    position: absolute;
+    left: 1em;
+    top: 7em;
+}
+
+.search__right__img-files > img:nth-child(2) {
+    width: 150px;
+    position: absolute;
+    right: 3em;
+    top: 8em;
+}
+
+.search__right__img-people {
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 6em;
 }
 
 .search__left__form {
@@ -111,6 +148,7 @@
     align-self: end;
     margin-top: 9em;
     width: 75%;
+    color: gray;
 }
 
 .search__left__form__right__footer__button {
@@ -129,3 +167,65 @@
     margin-top: 1em;
 }
 
+@media only screen and (max-width:1300px){
+    .search {
+        flex-direction: column;
+    }
+
+    .search__left, .search__left__form__left, .search__left__form__right, .search__left__form__left__input, .search__left__form__left__select, .search__right {
+        width: 100%;
+    }
+
+    .search__left > h1 {
+        font-size: 28px;
+        width: 90%;
+    }
+
+    .search__left > p {
+        font-size: 18px;
+    }
+
+    .search__left__form, .search__left__form__left__inputrow {
+        flex-direction: column;
+        row-gap: 1em;
+    }
+
+    .search__left__form {
+        margin: 2em -2em;
+        padding: 2em;
+    }
+
+    .search__left__form__right__footer {
+        margin-top: 1em;
+        width: 100%;
+    }
+
+    .search__left__form__left__input {
+        box-sizing: border-box;
+    }
+
+    .search__left__block__text {
+        width: 80%;
+    }
+
+    .search__right__img-files {
+        display: none;
+    }
+
+    .search__right__img-people {
+        position: static;
+        width: 110%;
+    }
+
+    .search__left__block {
+        position: relative;
+    }
+
+    .search__left__block__image {
+        display: block;
+        width: 60px;
+        position: absolute;
+        right: 1em;
+        top: -4em;
+    }
+}
