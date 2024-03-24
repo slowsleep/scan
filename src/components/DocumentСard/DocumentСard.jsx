@@ -12,13 +12,13 @@ const DocumentСard = ({ document }) => {
               <h1>{document.title}</h1>
 
                 {document.attributes.isTechNews ? (
-                    <p>Технические новости</p>
+                    <p className="document-card__content__type">Технические новости</p>
                 ) : document.attributes.isAnnouncement ? (
-                    <p>Анонсы и события</p>
+                    <p className="document-card__content__type">Анонсы и события</p>
                 ) : document.attributes.isDigest ? (
-                    <p>сводки новостей</p>
+                    <p className="document-card__content__type">сводки новостей</p>
                 ) : (
-                    <p>а?</p>
+                    <p></p>
                 )}
                 <img src={document.image} alt="" />
                 <p>{document.content}</p>
@@ -29,7 +29,7 @@ const DocumentСard = ({ document }) => {
                     color="light-green"
                     size="large"
                 />
-                {document.attributes.wordCount}
+                <p className="document-card__footer__word-count">{document.attributes.wordCount}</p>
             </div>
         </div>
     );

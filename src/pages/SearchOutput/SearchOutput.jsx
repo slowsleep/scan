@@ -2,7 +2,7 @@ import womanTarget from "../../assets/img/woman-target.png";
 import Button from "../../components/Button/Button";
 import "./SearchOutput.css";
 import SummaryTable from "../../components/SummaryTable/SummaryTable";
-import DocumentСard from "../../components/PublicationСard/DocumentСard";
+import DocumentСard from "../../components/DocumentСard/DocumentСard";
 
 import mockImg1 from "../../assets/img/mock-img1.png";
 import mockImg2 from "../../assets/img/mock-img2.png";

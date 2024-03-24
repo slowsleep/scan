@@ -56,3 +56,42 @@
 .summary-table .slick-prev {
     left: -160px;
 }
+
+@media only screen and (max-width:1300px){
+    .summary-table {
+        flex-direction: column;
+    }
+
+    .summary-table thead tr, .summary-table tbody tr {
+        flex-direction: row !important;
+    }
+    .summary-table tbody tr {
+        border-left: 0;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .summary-table tbody tr td {
+        text-align: center;
+    }
+
+    .summary-table thead tr {
+        justify-content: space-around;
+    }
+
+    .summary-table thead, .summary-table tbody {
+        width: 100%;
+    }
+
+    .summary-table thead {
+        border-radius: 7px 7px 0 0;
+    }
+
+    .summary-table .slick-prev {
+        left: -30px;
+    }
+
+    .summary-table .slick-next {
+        right: -30px;
+    }
+}

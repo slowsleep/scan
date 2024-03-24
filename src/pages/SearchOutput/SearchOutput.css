@@ -50,3 +50,34 @@
     margin-top: 2em;
     width: 14em;
 }
+
+@media only screen and (max-width:1300px){
+    .search-output h1, .search-output h2 {
+        font-size: 28px;
+    }
+    .search-output__loading__text > p {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .search-output__loading {
+        flex-direction: column;
+    }
+
+    .search-output__doclist, .search-output__doclist__items {
+        margin-top: 2em;
+    }
+
+    .search-output__doclist__items {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-output__loading__text {
+        width: 100%;
+    }
+
+    .search-output__loading__image {
+        width: 100%;
+    }
+}
