@@ -17,6 +17,8 @@ const LabelInput = ({
     classInput,
     required = false,
     labelRequired = false,
+    onChange,
+    onBlur,
 }) => {
 
     function handleChange(e) {
@@ -26,6 +28,7 @@ const LabelInput = ({
                 "label--checked"
             );
         }
+        onChange(e);
     }
 
     return (
@@ -38,6 +41,7 @@ const LabelInput = ({
                 name={name}
                 onChange={handleChange}
                 required={required}
+                onBlur={onBlur}
             />
         </div>
     );

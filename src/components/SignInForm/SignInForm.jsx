@@ -6,8 +6,35 @@ import facebook from "../../assets/img/facebook.svg";
 import yandex from "../../assets/img/yandex.svg";
 import lock from "../../assets/img/lock.svg";
 import "./SignInForm.css";
+import { useState } from "react";
 
 const SignInForm = () => {
+
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    const [isFormActive, setIsFormActive] = useState(false);
+
+    const handleLogin = (e) => {
+        console.log(e.target.value)
+        setLogin(e.target.value)
+    }
+
+    const handlePassword = (e) => {
+        console.log(e.target.value)
+        setPassword(e.target.value)
+    }
+
+    const blurHandler = () => {
+        if (login && password) {
+            setIsFormActive(true);
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("push");
+    }
+
     return (
         <Form className="login__form">
             <div className="login__form__header">
@@ -30,6 +57,9 @@ const SignInForm = () => {
                         label="Логин или номер телефона:"
                         type="text"
                         name="login"
+                        required={true}
+                        onChange={handleLogin}
+                        onBlur={blurHandler}
                     />
                     <LabelInput
                         className="login__form__content__inputs__label-input"
@@ -37,7 +67,8 @@ const SignInForm = () => {
                         type="password"
                         name="password"
                         required={true}
-                        labelRequired={false}
+                        onChange={handlePassword}
+                        onBlur={blurHandler}
                     />
                 </div>
                 <div className="login__form__content__buttons">
@@ -46,7 +77,8 @@ const SignInForm = () => {
                         title="Войти"
                         color="blue"
                         size="large"
-                        disabled={true}
+                        disabled={!isFormActive}
+                        onClick={handleSubmit}
                     />
                     <a className="login__form__content__buttons__link" href="">
                         Восстановить пароль
