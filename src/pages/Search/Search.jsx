@@ -56,6 +56,7 @@ const Search = () => {
                             label="ИНН компании"
                             placeholder="10 цифр"
                             required={true}
+                            labelRequired={true}
                         />
                         <Label
                             className={"search__left__form__left__label"}
@@ -73,6 +74,7 @@ const Search = () => {
                             label="Количество документов в выдаче"
                             placeholder="от 1 до 1000"
                             required={true}
+                            labelRequired={true}
                         />
                         <div className="search__left__form__left__dates">
                             <Label

@@ -6,7 +6,7 @@ import "./Button.css";
  * @param {string} size - (small | large) размер кнопки
  * @param {string} color - (blue | light-green | white) цвет кнопки
  */
-const Button = ({ className, title, size, color, disabled = false }) => {
+const Button = ({ className, title, size, color, disabled=false}) => {
     let classBtn = "button ";
 
     if (color == "blue") {

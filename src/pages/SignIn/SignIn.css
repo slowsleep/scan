@@ -20,105 +20,6 @@
     margin-left: 8em;
 }
 
-.login__form {
-    display: flex;
-    flex-direction: column;
-    color: #949494;
-    border-radius: 10px;
-    padding: 2em;
-    justify-content: space-between;
-    margin-right: 6em;
-    margin-top: 2em;
-    width: 30%;
-    position: relative;
-}
-
-.login__form__header {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1em;
-}
-
-.login__form__header .login_form__header__button:nth-child(1) {
-    width: 40%;
-}
-
-.login__form__header .login_form__header__button:nth-child(2) {
-    width: 60%;
-}
-
-.login_form__header__button {
-    border: none;
-    border-radius: 0;
-    outline: none;
-    background-color: transparent;
-    border-bottom: 2px solid var(--green);
-    color: var(--green);
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    padding: .5em;
-}
-
-.login_form__header__button:disabled {
-    color: grey;
-    border-color: gray;
-}
-
-.login__form__header__label {
-    color: gray;
-}
-
-.login__form__content {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2em;
-    margin: 3em 0 1em 0;
-}
-
-.login__form__content__inputs {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2em;
-}
-
-.login__form__content__inputs__label-input {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1em;
-}
-
-.login__form__content__buttons {
-    display: flex;
-    flex-direction: column;
-}
-
-.login__form__content__buttons__button {
-    font-size: 22px;
-    margin: .5em 0;
-}
-
-.login__form__content__buttons__link {
-    align-self: center;
-}
-
-.login__form__footer {
-    font-size: 16px;
-}
-
-.login__form__footer__links {
-    display: flex;
-    flex-direction: row;
-    column-gap: .5em;
-}
-
-.login__form__footer__links__item {
-    border: 1px solid #5970FF82;
-    padding: .2em 1em;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
 .lock {
     display: block;
     position: absolute;
@@ -133,19 +34,6 @@
 @media only screen and (max-width:1300px){
     .login {
         flex-direction: column;
-    }
-
-    .login__form {
-        width: 100%;
-        margin-top: 6em;
-        box-sizing: border-box;
-    }
-
-    .login_form__header__button {
-        font-size: 14px;
-    }
-    .login__form__content__buttons__button {
-        font-size: 20px;
     }
 
     .lock {
@@ -174,8 +62,5 @@
         align-self: center;
         width: 100%;
     }
-
-    .login__form__footer__links__item {
-        padding: .2em .5em;
-    }
+    
 }

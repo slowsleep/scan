@@ -16,6 +16,7 @@ const LabelInput = ({
     classLabel,
     classInput,
     required = false,
+    labelRequired = false,
 }) => {
 
     function handleChange(e) {
@@ -29,7 +30,7 @@ const LabelInput = ({
 
     return (
         <div className={(className ? className : "")}>
-            <Label className={ (classLabel ? classLabel : "")} title={label} required={required} />
+            <Label className={ (classLabel ? classLabel : "")} title={label} required={labelRequired} />
             <Input
                 className={(classInput ? classInput : "")}
                 placeholder={placeholder}

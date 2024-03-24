@@ -83,10 +83,6 @@
     width: 48%;
 }
 
-.search__input--border {
-    border: 1px solid #C7C7C7;
-}
-
 .search__left__form__left__label-input {
     display: flex;
     flex-direction: column;
@@ -165,6 +161,11 @@
     width: 78%;
     font-size: 14px;
     margin-top: 1em;
+}
+
+.label--required::after {
+    content: ' *';
+    font-size: 25px;
 }
 
 @media only screen and (max-width:1300px){

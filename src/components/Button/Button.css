@@ -33,3 +33,8 @@
 .button--small {
     padding: .4em 1em;
 }
+
+button:disabled, button:disabled:hover {
+    cursor: default;
+    filter: opacity(50%);
+}
