@@ -27,6 +27,8 @@ const SignInForm = () => {
     const blurHandler = () => {
         if (login && password) {
             setIsFormActive(true);
+        } else {
+            setIsFormActive(false);
         }
     }
 
