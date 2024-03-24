@@ -1,12 +1,5 @@
 import key from "../../assets/img/key.png";
 import "./SignIn.css";
-// import LabelInput from "../../components/LabelInput/LabelInput";
-// import Button from "../../components/Button/Button";
-// import Form from "../../components/Form/Form";
-// import google from "../../assets/img/google.svg";
-// import facebook from "../../assets/img/facebook.svg";
-// import yandex from "../../assets/img/yandex.svg";
-// import lock from "../../assets/img/lock.svg";
 import SignInForm from "../../components/SignInForm/SignInForm";
 
 const SignIn = () => {
