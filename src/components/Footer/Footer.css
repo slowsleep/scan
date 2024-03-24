@@ -22,3 +22,15 @@
 .footer__right__copyright {
     font-size: 12px;
 }
+
+@media only screen and (max-width:1300px){
+    .footer {
+        font-size: 14px;
+        padding: 0 2em;
+    }
+
+    .footer > img {
+        width: 30%;
+        align-self: self-start;
+    }
+}

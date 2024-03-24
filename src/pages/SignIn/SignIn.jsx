@@ -49,6 +49,11 @@ const SignIn = () => {
                 </div>
                 <img className="lock" src={lock} alt="замок" />
             </Form>
+            <img
+                    className="login__bottom__img"
+                    src={key}
+                    alt="Люди несут ключ"
+                />
         </div>
     );
 };

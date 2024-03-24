@@ -125,3 +125,57 @@
     top: -4em;
     left: -3em;
 }
+
+.login__bottom__img {
+    display: none;
+}
+
+@media only screen and (max-width:1300px){
+    .login {
+        flex-direction: column;
+    }
+
+    .login__form {
+        width: 100%;
+        margin-top: 6em;
+        box-sizing: border-box;
+    }
+
+    .login_form__header__button {
+        font-size: 14px;
+    }
+    .login__form__content__buttons__button {
+        font-size: 20px;
+    }
+
+    .lock {
+        display: block;
+        position: absolute;
+        top: -5em;
+        left: 6em;
+        width: 70px;
+    }
+
+    .login__left {
+        width: auto;
+    }
+
+    .login__left > h1 {
+        font-size: 22px;
+    }
+
+    .login__left__img {
+        display: none;
+    }
+
+    .login__bottom__img {
+        display: block;
+        margin-top: 2em;
+        align-self: center;
+        width: 100%;
+    }
+
+    .login__form__footer__links__item {
+        padding: .2em .5em;
+    }
+}
