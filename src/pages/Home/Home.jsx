@@ -16,17 +16,40 @@ import CustomPrevArrow from "../../components/SlickSlider/CustomPrevArrow";
 import lamp from "../../assets/img/lamp.svg";
 import target from "../../assets/img/target-small.svg";
 import laptop from "../../assets/img/laptop.svg";
+import { useState, useEffect } from "react";
 
 
 const Home = () => {
+
     let sliderSettings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
     };
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
+    if (windowWidth <= 1300) {
+        sliderSettings.slidesToShow = 1;
+        sliderSettings.slidesToScroll = 1;
+    } else if (windowWidth > 1300) {
+        sliderSettings.slidesToShow = 3;
+        sliderSettings.slidesToScroll = 3;
+    }
+
 
     return (
         <>
