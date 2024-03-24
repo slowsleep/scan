@@ -37,3 +37,7 @@
 .document-card__content > p {
     color: gray;
 }
+
+.document-card__content > img {
+    width: 100%;
+}
