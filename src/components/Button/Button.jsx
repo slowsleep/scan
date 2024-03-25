@@ -13,8 +13,6 @@ const Button = ({ className, title, size, color, disabled=false, onClick}) => {
         classBtn += "button--blue ";
     } else if (color == "light-green") {
         classBtn += "button--light-green ";
-    } else if (color == "white") {
-        classBtn += "button--white ";
     }
 
     if (size == "large") {

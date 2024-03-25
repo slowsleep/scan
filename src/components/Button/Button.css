@@ -10,11 +10,6 @@
 
 /* colors */
 
-.button--white {
-    background-color: white;
-    color: rgba(0,0,0,.4);
-}
-
 .button--blue {
     background-color: var(--blue);
     color: white;
