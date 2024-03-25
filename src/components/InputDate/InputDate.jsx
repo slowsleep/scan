@@ -1,6 +1,6 @@
 import "./InputDate.css";
 
-const InputDate = ({className, placeholder}) => {
+const InputDate = ({className, placeholder, onChange, onBlur}) => {
 
     const handleFocus = (event) => {
         event.target.type = 'date';
@@ -10,6 +10,7 @@ const InputDate = ({className, placeholder}) => {
       if (!event.target.value) {
         event.target.type = 'text';
       }
+      onBlur()
     };
 
   return (
@@ -18,6 +19,7 @@ const InputDate = ({className, placeholder}) => {
         placeholder={placeholder}
         onBlur={(event) => handleBlur(event)}
         onFocus={(event) => handleFocus(event)}
+        onChange={onChange}
     />
   )
 }

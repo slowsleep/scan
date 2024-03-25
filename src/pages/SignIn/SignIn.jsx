@@ -17,7 +17,6 @@ const SignIn = () => {
                     width={"40%"}
                 />
             </div>
-            {/* form */}
             <SignInForm />
             <img
                 className="login__bottom__img"
