@@ -53,8 +53,8 @@
     width: 100%;
 }
 
-.summary-table .slick-prev {
-    left: -160px;
+.summary-table .slick-next {
+    right: -30px;
 }
 
 @media only screen and (max-width:1200px){
@@ -91,7 +91,4 @@
         left: -30px;
     }
 
-    .summary-table .slick-next {
-        right: -30px;
-    }
 }

@@ -24,9 +24,21 @@ const SummaryTable = ({periodList}) => {
 
       return () => {
         window.removeEventListener('resize', handleResize);
-      };
-    }, []);
 
+        // адаптивное изменение положения стрелки "назад" для карусели в таблице
+        let prev = document.querySelector(".slick-prev");
+
+        if (windowWidth <= 1200) {
+            prev.style.left = `-30px`;
+        } else {
+            let theadWidth = document.querySelector(".summary-table thead tr").clientWidth;
+            prev.style.left = `-${theadWidth + 30}px`;
+        }
+      };
+
+    }, [windowWidth]);
+
+    // // адаптивная настройка выводимых элементов в карусели
     if (windowWidth <= 1200) {
         sliderSettings.slidesToShow = 1;
     } else if (windowWidth > 1200) {
@@ -46,7 +58,7 @@ const SummaryTable = ({periodList}) => {
                 <tbody>
                     <Slider {...sliderSettings}>
                         {periodList.map((item) => (
-                            <tr>
+                            <tr key={item}>
                                 <td>{item.period}</td>
                                 <td>{item.all}</td>
                                 <td>{item.risks}</td>
