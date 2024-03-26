@@ -72,7 +72,11 @@ const Home = () => {
                         />
                     </Link>
                 </div>
-                <img src={tables} alt="Человек и таблицы" width={"70%"} />
+                <div>
+                    <img src={tables} alt="Человек и таблицы"
+                    width={"100%"}
+                    />
+                </div>
             </section>
             <section className="why-we">
                 <h2>почему именно мы</h2>
@@ -90,11 +94,13 @@ const Home = () => {
                         title="Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству"
                     />
                 </Slider>
-                <img
-                    src={bubbles}
-                    alt="Человек сидит и показывает галочку"
-                    width={"97%"}
-                />
+                <div className="why-we__image">
+                    <img
+                        src={bubbles}
+                        alt="Человек сидит и показывает галочку"
+                        width={"100%"}
+                    />
+                </div>
             </section>
             <section className="tariffs">
                 <h2>наши тарифы</h2>

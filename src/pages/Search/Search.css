@@ -56,7 +56,7 @@
     top: 8em;
 }
 
-.search__right__img-people {
+.search__right__img-people > img {
     width: 90%;
     position: absolute;
     bottom: 0;
@@ -95,6 +95,10 @@
     }
 
     .search__right__img-people {
+        overflow: hidden;
+    }
+
+    .search__right__img-people > img{
         position: static;
         width: 110%;
     }

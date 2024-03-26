@@ -42,6 +42,10 @@ h2 {
     margin-top: 7em;
 }
 
+.why-we__image {
+    overflow: hidden;
+}
+
 .slick-slider {
     margin: 4em 2em;
 }
@@ -114,7 +118,7 @@ h2 {
         margin: 2em;
     }
 
-    .why-we > img {
+    .why-we__image > img {
         width: 250%;
     }
 

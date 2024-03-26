@@ -29,7 +29,9 @@ const Search = () => {
                     <img src={document} alt="Документ" />
                     <img src={folders} alt="Папки" />
                 </div>
-                <img className="search__right__img-people" src={racket} alt="Человек ищет" />
+                <div className="search__right__img-people">
+                    <img  src={racket} alt="Человек ищет" />
+                </div>
             </div>
         </div>
     );
