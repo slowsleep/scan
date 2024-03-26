@@ -19,6 +19,7 @@ const LabelInput = ({
     labelRequired = false,
     onChange,
     onBlur,
+    error=false,
 }) => {
 
     function handleChange(e) {
@@ -42,6 +43,7 @@ const LabelInput = ({
                 onChange={handleChange}
                 required={required}
                 onBlur={onBlur}
+                error={error}
             />
         </div>
     );

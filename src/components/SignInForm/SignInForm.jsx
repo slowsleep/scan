@@ -6,36 +6,67 @@ import facebook from "../../assets/img/facebook.svg";
 import yandex from "../../assets/img/yandex.svg";
 import lock from "../../assets/img/lock.svg";
 import "./SignInForm.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SignInForm = () => {
-
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
     const [isFormActive, setIsFormActive] = useState(false);
 
     const handleLogin = (e) => {
-        console.log(e.target.value)
-        setLogin(e.target.value)
+        setLogin(e.target.value);
+    };
+
+    const blurLogin = (e) => {
+        let val = e.target.value;
+        let reg = val.match(/^(\+[0-9]{1}\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2})|([a-zA-Z0-9_]{10,50})$/);
+
+        if (reg && reg[0] === val) {
+            setLoginError(false)
+            console.log(reg, "reg true")
+        } else {
+            console.log(reg, "reg false")
+            setLoginError("Введите корректные данные");
+        }
     }
 
     const handlePassword = (e) => {
-        console.log(e.target.value)
-        setPassword(e.target.value)
-    }
+        setPassword(e.target.value);
+    };
 
-    const blurHandler = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        let response = await fetch(
+            "https://gateway.scan-interfax.ru/api/v1/account/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ login, password }),
+            }
+        );
+
+        let result = await response.json()
+        if (result.errorCode === "Auth_InvalidUserOrPassword") {
+            setPasswordError("Неправильный пароль");
+        } else {
+            localStorage.setItem("accessToken", result.accessToken);
+            localStorage.setItem("expire", result.expire);
+        }
+
+    };
+
+    useEffect(() => {
         if (login && password) {
             setIsFormActive(true);
         } else {
             setIsFormActive(false);
         }
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("push");
-    }
+    }, [login, password, loginError, passwordError]);
 
     return (
         <Form className="login__form">
@@ -61,8 +92,10 @@ const SignInForm = () => {
                         name="login"
                         required={true}
                         onChange={handleLogin}
-                        onBlur={blurHandler}
+                        onBlur={blurLogin}
+                        error={loginError}
                     />
+                    {loginError && <p className="error">{loginError}</p>}
                     <LabelInput
                         className="login__form__content__inputs__label-input"
                         label="Пароль:"
@@ -70,8 +103,9 @@ const SignInForm = () => {
                         name="password"
                         required={true}
                         onChange={handlePassword}
-                        onBlur={blurHandler}
+                        error={passwordError}
                     />
+                    {passwordError && <p className="error">{passwordError}</p>}
                 </div>
                 <div className="login__form__content__buttons">
                     <Button
