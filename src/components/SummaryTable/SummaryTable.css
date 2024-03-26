@@ -57,7 +57,7 @@
     left: -160px;
 }
 
-@media only screen and (max-width:1300px){
+@media only screen and (max-width:1200px){
     .summary-table {
         flex-direction: column;
     }

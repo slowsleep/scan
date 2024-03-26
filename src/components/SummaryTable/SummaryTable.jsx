@@ -27,9 +27,9 @@ const SummaryTable = ({periodList}) => {
       };
     }, []);
 
-    if (windowWidth <= 1300) {
+    if (windowWidth <= 1200) {
         sliderSettings.slidesToShow = 1;
-    } else if (windowWidth > 1300) {
+    } else if (windowWidth > 1200) {
         sliderSettings.slidesToShow = 8;
     }
 

@@ -99,7 +99,7 @@
     margin-top: 1em;
 }
 
-@media only screen and (max-width:1300px){
+@media only screen and (max-width:1200px){
     .search-form__left, .search-form__right, .search-form__left__input, .search-form__left__select {
         width: 100%;
     }
