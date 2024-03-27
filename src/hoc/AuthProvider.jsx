@@ -7,13 +7,13 @@ export const AuthProvider = ({children}) => {
     const [auth, setAuth] = useState(false);
 
     const signIn = (accessToken, expire) => {
-        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("token", accessToken);
         localStorage.setItem("expire", expire);
         setAuth(true);
     };
-    
+
     const signOut = () => {
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem("token");
         localStorage.removeItem("expire");
         setAuth(false)
     };
