@@ -8,6 +8,7 @@ import lock from "../../assets/img/lock.svg";
 import "./SignInForm.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hook/useAuth";
+import api from "../../api";
 
 const SignInForm = () => {
     const [login, setLogin] = useState("");
@@ -41,25 +42,12 @@ const SignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        let response = await fetch(
-            "https://gateway.scan-interfax.ru/api/v1/account/login",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ login, password }),
-            }
-        );
-
-        let result = await response.json()
-        if (result.errorCode === "Auth_InvalidUserOrPassword") {
+        let result = api.post("/account/login", {login, password});
+        result.then(function(response) {
+            signIn(response.data.accessToken, response.data.expire);
+        }).catch(function() {
             setPasswordError("Неправильный пароль");
-        } else {
-            signIn(result.accessToken, result.expire);
-        }
-
+        });
     };
 
     useEffect(() => {
