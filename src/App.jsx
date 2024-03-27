@@ -5,18 +5,23 @@ import SignIn from "./pages/SignIn/SignIn";
 import Search from "./pages/Search/Search";
 import SearchOutput from "./pages/SearchOutput/SearchOutput";
 
+import { RequireAuth } from "./hoc/RequireAuth";
+import { AuthProvider } from "./hoc/AuthProvider";
+
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}></Route>
         <Route path="login" element={<SignIn/>}></Route>
-        <Route path="search" element={<Search/>}></Route>
-        <Route path="search-output" element={<SearchOutput/>}></Route>
+        <Route path="search" element={<RequireAuth><Search/></RequireAuth>}></Route>
+        <Route path="search-output" element={<RequireAuth><SearchOutput/></RequireAuth>}></Route>
     </Route>
 ));
 
 function App() {
     return (
-        <RouterProvider router={router} />
+        <AuthProvider>
+            <RouterProvider router={router} />
+        </AuthProvider>
     );
 }
 

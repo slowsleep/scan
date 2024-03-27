@@ -7,6 +7,7 @@ import yandex from "../../assets/img/yandex.svg";
 import lock from "../../assets/img/lock.svg";
 import "./SignInForm.css";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../hook/useAuth";
 
 const SignInForm = () => {
     const [login, setLogin] = useState("");
@@ -14,6 +15,8 @@ const SignInForm = () => {
     const [loginError, setLoginError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [isFormActive, setIsFormActive] = useState(false);
+
+    const {signIn} = useAuth();
 
     const handleLogin = (e) => {
         setLogin(e.target.value);
@@ -54,8 +57,7 @@ const SignInForm = () => {
         if (result.errorCode === "Auth_InvalidUserOrPassword") {
             setPasswordError("Неправильный пароль");
         } else {
-            localStorage.setItem("accessToken", result.accessToken);
-            localStorage.setItem("expire", result.expire);
+            signIn(result.accessToken, result.expire);
         }
 
     };
