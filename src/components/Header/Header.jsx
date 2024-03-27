@@ -1,11 +1,12 @@
 import logo from "../../assets/img/logo.svg";
 import whiteLogo from "../../assets/img/white-logo.svg";
-// import burger from "../../assets/img/burger.svg";
+import { useAuth } from "../../hook/useAuth";
 import Button from "../Button/Button";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+    const {auth, signOut} = useAuth();
     const openBurgerHandler = () => {
         let header = document.querySelector(".header");
         let burgerMenu = document.querySelector(".burger-menu");
@@ -36,20 +37,28 @@ const Header = () => {
                     </Link>
                 </nav>
                 <div className="header__right">
-                    <Button
-                        className="header__regbtn"
-                        title="Зарегистрироваться"
-                        size="small"
-                        disabled={true}
-                    />
-                    <div className="vertical-line"></div>
-                    <Link to="/login">
+                    {!auth ?
+                    <>
                         <Button
-                            title="Войти"
+                            className="header__regbtn"
+                            title="Зарегистрироваться"
                             size="small"
-                            color="light-green"
-                        />
-                    </Link>
+                            disabled={true}
+                            />
+                        <div className="vertical-line"></div>
+                        <Link to="/login">
+                            <Button
+                                title="Войти"
+                                size="small"
+                                color="light-green"
+                                />
+                        </Link>
+                    </>
+                    :
+                    <>
+                        <Button title="Выйти" size="small" color="light-green" onClick={signOut}/>
+                    </>
+                    }
                 </div>
                 <button
                     className="header__burger"
@@ -71,6 +80,8 @@ const Header = () => {
                         <Link to="#">FAQ</Link>
                     </div>
                     <div className="burger-menu__main__btns">
+                        {!auth ?
+                        <>
                         <Button
                             className="header__regbtn"
                             title="Зарегистрироваться"
@@ -88,6 +99,15 @@ const Header = () => {
                                 color="light-green"
                             />
                         </Link>
+                        </> :
+                        <>
+                            <Button
+                                    title="Выйти"
+                                    size="large"
+                                    color="light-green"
+                                    onClick={signOut}
+                            />
+                        </>}
                     </div>
                 </div>
             </header>

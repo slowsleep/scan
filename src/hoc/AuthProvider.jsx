@@ -9,7 +9,7 @@ export const AuthProvider = ({children}) => {
     const signIn = (accessToken, expire) => {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("expire", expire);
-        setAuth(true)
+        setAuth(true);
     };
     
     const signOut = () => {
