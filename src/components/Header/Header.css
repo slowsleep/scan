@@ -9,6 +9,16 @@
 .header__right {
     display: flex;
     flex-direction: row;
+    width: 59%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__right__login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 0;
 }
 
 .header__regbtn {
@@ -25,7 +35,7 @@
 .header__nav {
     display: flex;
     flex-direction: row;
-    column-gap: 3em;
+    column-gap: 4em;
 }
 
 .nav__item {
@@ -120,7 +130,12 @@
         display: block;
     }
 
-    .header__right, .header__nav {
+    .header__right {
+        width: auto;
+        column-gap: 2em;
+    }
+
+    .header__right__login, .header__nav {
         display: none;
     }
 }

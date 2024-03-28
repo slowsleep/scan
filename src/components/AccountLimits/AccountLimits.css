@@ -1,0 +1,40 @@
+.account-limits {
+    border: none;
+    border-radius: 5px;
+    background-color:rgba(217, 217, 217, .3);
+    font-size: 10px;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: center;
+    column-gap: 1em;
+}
+
+.account-limits > p {
+    margin: .2em 0;
+    text-align: end;
+}
+
+.account-limits__text {
+    color: rgba(0, 0, 0, .4);
+
+}
+
+.account-limits__count {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.account-limits__count--limit {
+    color: #8AC540;
+}
+
+@media only screen and (max-width:1200px){
+    .account-limits {
+        grid-template-columns: 130px;
+
+    }
+    .account-limits > p {
+        text-align: start;
+    }
+}

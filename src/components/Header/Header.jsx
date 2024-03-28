@@ -5,8 +5,24 @@ import Button from "../Button/Button";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
+import AccountLimits from "../AccountLimits/AccountLimits";
+import { useEffect, useState } from "react";
+import api from "../../api";
+
 const Header = () => {
     const {auth, signOut} = useAuth();
+
+    const [accountLimits, setAccountLimits] = useState({});
+
+    useEffect(() => {
+        if (auth && JSON.stringify(accountLimits) === "{}") {
+            api.get("account/info").then((res) => {
+                setAccountLimits(res.data.eventFiltersInfo);
+            });
+        }
+    }, [auth, accountLimits])
+
+
     const openBurgerHandler = () => {
         let header = document.querySelector(".header");
         let burgerMenu = document.querySelector(".burger-menu");
@@ -25,45 +41,48 @@ const Header = () => {
         <>
             <header className="header">
                 <img src={logo} alt="Scan loog" />
-                <nav className="header__nav">
-                    <Link to="/" className="nav__item">
-                        Главная
-                    </Link>
-                    <Link to="#" className="nav__item">
-                        Тарифы
-                    </Link>
-                    <Link to="#" className="nav__item">
-                        FAQ
-                    </Link>
-                </nav>
                 <div className="header__right">
-                    {!auth ?
-                    <>
-                        <Button
-                            className="header__regbtn"
-                            title="Зарегистрироваться"
-                            size="small"
-                            disabled={true}
-                            />
-                        <div className="vertical-line"></div>
-                        <Link to="/login">
-                            <Button
-                                title="Войти"
-                                size="small"
-                                color="light-green"
-                                />
+                    <nav className="header__nav">
+                        <Link to="/" className="nav__item">
+                            Главная
                         </Link>
-                    </>
-                    :
-                    <>
-                        <Button title="Выйти" size="small" color="light-green" onClick={signOut}/>
-                    </>
-                    }
+                        <Link to="#" className="nav__item">
+                            Тарифы
+                        </Link>
+                        <Link to="#" className="nav__item">
+                            FAQ
+                        </Link>
+                    </nav>
+                    {auth ? <AccountLimits info={accountLimits} /> : null}
+                    <div className="header__right__login">
+                        {!auth ?
+                        <>
+                            <Button
+                                className="header__regbtn"
+                                title="Зарегистрироваться"
+                                size="small"
+                                disabled={true}
+                                />
+                            <div className="vertical-line"></div>
+                            <Link to="/login">
+                                <Button
+                                    title="Войти"
+                                    size="small"
+                                    color="light-green"
+                                    />
+                            </Link>
+                        </>
+                        :
+                        <>
+                            <Button title="Выйти" size="small" color="light-green" onClick={signOut}/>
+                        </>
+                        }
+                    </div>
+                    <button
+                        className="header__burger"
+                        onClick={openBurgerHandler}
+                    ></button>
                 </div>
-                <button
-                    className="header__burger"
-                    onClick={openBurgerHandler}
-                ></button>
             </header>
             <header className="burger-menu">
                 <div className="burger-menu__header">
