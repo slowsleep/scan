@@ -23,13 +23,11 @@ const SignInForm = () => {
 
     const blurLogin = (e) => {
         let val = e.target.value;
-        let reg = val.match(/^(\+[0-9]{1}\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2})|([a-zA-Z0-9_]{10,50})$/);
+        let regex = /(^\+[0-9]{1}\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2})$|(^[a-zA-Z0-9_]{10,20}$)$/.test(val)
 
-        if (reg && reg[0] === val) {
+        if (regex) {
             setLoginError(false)
-            console.log(reg, "reg true")
         } else {
-            console.log(reg, "reg false")
             setLoginError("Введите корректные данные");
         }
     }
