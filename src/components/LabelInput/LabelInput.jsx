@@ -14,6 +14,7 @@ const LabelInput = ({
     className,
     classLabel,
     classInput,
+    classError=false,
     required = false,
     labelRequired = false,
     onChange,
@@ -36,6 +37,7 @@ const LabelInput = ({
             <Label className={ (classLabel ? classLabel : "")} title={label} required={labelRequired} />
             <Input
                 className={(classInput ? classInput : "")}
+                classError={(classError ? classError : "")}
                 placeholder={placeholder}
                 type={type}
                 name={name}
@@ -44,7 +46,6 @@ const LabelInput = ({
                 onBlur={onBlur}
                 error={error}
             />
-            {error ? <p className="error">{error}</p> : null}
         </div>
     );
 };
