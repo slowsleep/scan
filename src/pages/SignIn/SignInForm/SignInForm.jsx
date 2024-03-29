@@ -1,14 +1,12 @@
-import Form from "../Form/Form";
-import Button from "../Button/Button";
-import LabelInput from "../LabelInput/LabelInput";
-import google from "../../assets/img/google.svg";
-import facebook from "../../assets/img/facebook.svg";
-import yandex from "../../assets/img/yandex.svg";
-import lock from "../../assets/img/lock.svg";
-import "./SignInForm.css";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../hook/useAuth";
-import api from "../../api";
+import { useAuth } from "../../../hook/useAuth";
+import api from "../../../api";
+import google from "../../../assets/img/google.svg";
+import facebook from "../../../assets/img/facebook.svg";
+import yandex from "../../../assets/img/yandex.svg";
+import lock from "../../../assets/img/lock.svg";
+import "./SignInForm.css";
+import { Form, Button, LabelInput } from "../../../components/";
 
 const SignInForm = () => {
     const [login, setLogin] = useState("");

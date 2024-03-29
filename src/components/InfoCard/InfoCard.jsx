@@ -9,4 +9,4 @@ const InfoCard = ({logo, title}) => {
   )
 }
 
-export default InfoCard;
+export { InfoCard };

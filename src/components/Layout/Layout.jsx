@@ -1,7 +1,6 @@
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
 import { Outlet } from "react-router-dom";
-import "../index.css";
+import "../../index.css";
+import { Header, Footer } from "../";
 
 const Layout = () => {
   return (
@@ -15,4 +14,4 @@ const Layout = () => {
   )
 }
 
-export default Layout;
+export { Layout };

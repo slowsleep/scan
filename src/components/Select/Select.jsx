@@ -7,4 +7,4 @@ const Select = ({className, options, onChange, onBlur}) => {
   )
 }
 
-export default Select;
+export { Select };

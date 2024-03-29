@@ -1,13 +1,7 @@
-import Form from "../Form/Form";
-import LabelInput from "../LabelInput/LabelInput";
-import Label from "../Label/Label";
-import Select from "../Select/Select";
-import InputDate from "../InputDate/InputDate";
-import Button from "../Button/Button";
+import { useState } from "react";
 import "./SearchForm.css";
 import CheckboxList from "./CheckboxList";
-import { useState } from "react";
-
+import { Form, LabelInput, Label, Select, InputDate, Button } from "../../../components/";
 
 const SearchForm = () => {
     const [inn, setInn] = useState("");
@@ -33,7 +27,7 @@ const SearchForm = () => {
         setDateTo(e.target.value)
     }
 
-    const blurHandler = (e) => {
+    const blurHandler = () => {
         console.log(inn, tonality, docCount, dateFrom, dateTo);
 
         if (inn && tonality && docCount && dateFrom && dateTo) {

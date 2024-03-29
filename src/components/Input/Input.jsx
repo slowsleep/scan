@@ -11,4 +11,4 @@ const Input = ({ className, type = "text", placeholder, onChange, onBlur, error=
     );
 };
 
-export default Input;
+export {Input};

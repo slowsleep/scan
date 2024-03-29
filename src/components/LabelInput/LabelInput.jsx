@@ -1,6 +1,5 @@
 import "./LabelInput.css";
-import Input from "../Input/Input";
-import Label from "../Label/Label";
+import { Input, Label } from "../";
 
 /**
  * Подходит для input с type = "text", "checkbox"
@@ -49,4 +48,4 @@ const LabelInput = ({
     );
 };
 
-export default LabelInput;
+export { LabelInput };

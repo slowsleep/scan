@@ -1,5 +1,5 @@
-import Button from "../Button/Button";
 import "./TariffСard.css";
+import { Button } from "../";
 
 const TariffСard = ({
     title,
@@ -95,4 +95,4 @@ const TariffСard = ({
     );
 };
 
-export default TariffСard;
+export { TariffСard };

@@ -6,4 +6,4 @@ const Form = ({className, children}) => {
   )
 }
 
-export default Form;
+export {Form};

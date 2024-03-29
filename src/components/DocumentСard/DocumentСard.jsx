@@ -1,4 +1,6 @@
-import Button from "../Button/Button";
+// import Button from "../Button/Button";
+// import { Button } from "../../components";
+import { Button } from "../";
 import "./DocumentСard.css";
 
 const DocumentСard = ({ document }) => {
@@ -35,4 +37,4 @@ const DocumentСard = ({ document }) => {
     );
 };
 
-export default DocumentСard;
+export { DocumentСard };

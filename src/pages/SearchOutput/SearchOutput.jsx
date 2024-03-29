@@ -1,11 +1,10 @@
-import womanTarget from "../../assets/img/woman-target.png";
-import Button from "../../components/Button/Button";
 import "./SearchOutput.css";
-import SummaryTable from "../../components/SummaryTable/SummaryTable";
-import DocumentСard from "../../components/DocumentСard/DocumentСard";
-
+import SummaryTable from "./SummaryTable/SummaryTable";
+import womanTarget from "../../assets/img/woman-target.png";
 import mockImg1 from "../../assets/img/mock-img1.png";
 import mockImg2 from "../../assets/img/mock-img2.png";
+import { Button, DocumentСard } from "../../components/";
+
 
 const mockSummary = [
   { period: "10.09.2021", all: "5", risks: "0" },

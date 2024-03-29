@@ -1,6 +1,6 @@
 import key from "../../assets/img/key.png";
 import "./SignIn.css";
-import SignInForm from "../../components/SignInForm/SignInForm";
+import SignInForm from "./SignInForm/SignInForm";
 
 const SignIn = () => {
     return (

@@ -12,4 +12,4 @@ const Label = ({className, title, children, required=false}) => {
   )
 }
 
-export default Label;
+export { Label };

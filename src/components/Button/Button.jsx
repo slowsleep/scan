@@ -26,4 +26,4 @@ const Button = ({ className, title, size, color, disabled=false, onClick}) => {
     return <button className={classBtn} disabled={disabled} onClick={onClick}>{title}</button>;
 };
 
-export default Button;
+export { Button };

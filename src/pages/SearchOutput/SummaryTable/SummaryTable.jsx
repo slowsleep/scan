@@ -1,8 +1,7 @@
-import "./SummaryTable.css";
-import Slider from "react-slick";
-import CustomNextArrow from "../../components/SlickSlider/CustomNextArrow";
-import CustomPrevArrow from "../../components/SlickSlider/CustomPrevArrow";
 import { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "./SummaryTable.css";
+import { CustomNextArrow, CustomPrevArrow } from "../../../components/";
 
 const SummaryTable = ({periodList}) => {
     let sliderSettings = {
@@ -38,7 +37,7 @@ const SummaryTable = ({periodList}) => {
 
     }, [windowWidth]);
 
-    // // адаптивная настройка выводимых элементов в карусели
+    // адаптивная настройка выводимых элементов в карусели
     if (windowWidth <= 1200) {
         sliderSettings.slidesToShow = 1;
     } else if (windowWidth > 1200) {

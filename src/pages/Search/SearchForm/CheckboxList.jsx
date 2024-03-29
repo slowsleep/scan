@@ -1,4 +1,4 @@
-import LabelInput from "../LabelInput/LabelInput";
+import { LabelInput } from "../../../components/";
 
 const CheckboxList = () => {
     let checkboxList = [

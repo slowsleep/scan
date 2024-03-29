@@ -24,4 +24,4 @@ const InputDate = ({className, placeholder, onChange, onBlur}) => {
   )
 }
 
-export default InputDate;
+export { InputDate };

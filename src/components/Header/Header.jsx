@@ -1,17 +1,14 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import api from "../../api";
+import { useAuth } from "../../hook/useAuth";
+import "./Header.css";
 import logo from "../../assets/img/logo.svg";
 import whiteLogo from "../../assets/img/white-logo.svg";
-import { useAuth } from "../../hook/useAuth";
-import Button from "../Button/Button";
-import "./Header.css";
-import { Link } from "react-router-dom";
-
-import AccountLimits from "../AccountLimits/AccountLimits";
-import { useEffect, useState } from "react";
-import api from "../../api";
+import { AccountLimits, Button } from "../";
 
 const Header = () => {
     const {auth, signOut} = useAuth();
-
     const [accountLimits, setAccountLimits] = useState({});
 
     useEffect(() => {
@@ -134,4 +131,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export { Header };

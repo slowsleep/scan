@@ -9,4 +9,4 @@ const CustomPrevArrow = (props) => {
     );
 }
 
-export default CustomPrevArrow;
+export { CustomPrevArrow };

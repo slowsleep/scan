@@ -1,14 +1,8 @@
-// import Button from "../../components/Button/Button";
-// import LabelInput from "../../components/LabelInput/LabelInput";
-// import Form from "../../components/Form/Form";
+import "./Search.css";
+import SearchForm from "./SearchForm/SearchForm";
 import racket from "../../assets/img/racket.png";
 import document from "../../assets/img/document.png";
 import folders from "../../assets/img/folders.png";
-import "./Search.css";
-// import Select from "../../components/Select/Select";
-// import Label from "../../components/Label/Label";
-// import InputDate from "../../components/InputDate/InputDate";
-import SearchForm from "../../components/SearchForm/SearchForm";
 
 const Search = () => {
     return (
