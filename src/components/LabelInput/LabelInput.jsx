@@ -44,6 +44,7 @@ const LabelInput = ({
                 onBlur={onBlur}
                 error={error}
             />
+            {error ? <p className="error">{error}</p> : null}
         </div>
     );
 };

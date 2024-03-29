@@ -31,6 +31,13 @@ body {
   padding: 0 4em;
 }
 
+.error {
+  color: red;
+  text-align: center;
+  margin: .3em;
+  font-size: 12px;
+}
+
 @media only screen and (max-width:1200px){
   .main {
     padding: 0 1em;

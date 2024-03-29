@@ -73,6 +73,7 @@ const SignInForm = () => {
                 <div className="login__form__content__inputs">
                     <LabelInput
                         className="login__form__content__inputs__label-input"
+                        classLabel="login__form__content__inputs__label-input__label"
                         label="Логин или номер телефона:"
                         type="text"
                         name="login"
@@ -81,9 +82,9 @@ const SignInForm = () => {
                         onBlur={blurLogin}
                         error={loginError}
                     />
-                    {loginError && <p className="error">{loginError}</p>}
                     <LabelInput
                         className="login__form__content__inputs__label-input"
+                        classLabel="login__form__content__inputs__label-input__label"
                         label="Пароль:"
                         type="password"
                         name="password"
@@ -91,7 +92,6 @@ const SignInForm = () => {
                         onChange={handlePassword}
                         error={passwordError}
                     />
-                    {passwordError && <p className="error">{passwordError}</p>}
                 </div>
                 <div className="login__form__content__buttons">
                     <Button
