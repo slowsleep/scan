@@ -91,16 +91,28 @@ const SearchForm = () => {
         }
     };
 
+    const getFullFormatDate = (date) => {
+        const numWithZero = (num) => {
+            if (num.toString().length < 2) {
+                return `0${num}`;
+            }
+            return num;
+        }
+
+        let fullDate = `${date.getFullYear()}-${numWithZero(date.getMonth() + 1)}-${numWithZero(date.getDate())}`;
+
+        return fullDate;
+    }
+
     const dateFromHandle = (e) => {
-        setDateFrom(e.target.value);
+        setDateFrom(e);
     };
 
     const blurDateFrom = (e) => {
-        let val = e.target.value;
-        if (!val) {
+        if (!e) {
             setDateFromError(true);
             setDatesError("Обязательные поля");
-        } else if (dateFrom > dateTo) {
+        } else if (dateTo && dateFrom.getTime() > dateTo.getTime()) {
             setDateFromError(true);
             setDatesError("Введите корректные данные");
         } else {
@@ -109,15 +121,14 @@ const SearchForm = () => {
     };
 
     const dateToHandle = (e) => {
-        setDateTo(e.target.value);
+        setDateTo(e);
     };
 
     const blurDateTo = (e) => {
-        let val = e.target.value;
-        if (!val) {
+        if (!e) {
             setDateToError(true);
             setDatesError("Обязательные поля");
-        } else if (dateTo < dateFrom) {
+        } else if (dateFrom && dateTo.getTime() < dateFrom.getTime()) {
             setDateToError(true)
             setDatesError("Введите корректные данные");
         } else {
@@ -164,6 +175,7 @@ const SearchForm = () => {
 
     const submitHandle = (e) => {
         e.preventDefault();
+        console.log(inn, tonality, docCount, getFullFormatDate(dateFrom), getFullFormatDate(dateTo));
     };
 
     return (
@@ -215,8 +227,8 @@ const SearchForm = () => {
                     />
                     <div>
                         <div className="search-form__left__inputrow">
-                            <InputDate
-                                className="search__input--border search-form__left__input search-form__left__input-date"
+                              <InputDate
+                                classInput=" search__input--border"
                                 classError="search-form__left__error"
                                 placeholder="Дата начала"
                                 onChange={dateFromHandle}
@@ -224,7 +236,7 @@ const SearchForm = () => {
                                 error={datesError}
                             />
                             <InputDate
-                                className="search__input--border search-form__left__input search-form__left__input-date"
+                                classInput="search__input--border"
                                 placeholder="Дата конца"
                                 onChange={dateToHandle}
                                 onBlur={blurDateTo}

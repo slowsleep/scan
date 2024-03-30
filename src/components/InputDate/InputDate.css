@@ -1,8 +1,34 @@
 .input-date {
-    background: url("../../assets/img/arrow-down.svg") no-repeat scroll right 8% top 50%;
-    padding-right: 2em;
+    width: 83%;
+    padding: .9em 1em !important;
+    font-size: 14px;
 }
 
-.input-date[type="date"] {
-    background: none;
+.arrow-down {
+    right: 0%;
+    top: 25%;
+    width: 20px;
+    cursor: pointer;
+}
+
+.react-datepicker-wrapper {
+    width: 94%;
+}
+
+.input-date::placeholder {
+    text-align: center;
+}
+
+@media only screen and (max-width:1200px){
+    .input-date {
+        width: 100%;
+    }
+
+    .react-datepicker__input-container {
+        width: 97%;
+    }
+
+    .react-datepicker-wrapper {
+        width: 100%;
+    }
 }
