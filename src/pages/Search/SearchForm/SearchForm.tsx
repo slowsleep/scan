@@ -2,27 +2,39 @@ import { useEffect, useState } from "react";
 import "./SearchForm.css";
 import CheckboxList from "./CheckboxList";
 import {
-    Form,
-    LabelInput,
-    Label,
-    Select,
-    InputDate,
     Button,
-} from "../../../components/";
+    Form,
+    InputDate,
+    Label,
+    LabelInput,
+    Select,
+} from "@components/";
+import api from "@api/";
+import IObjectSearchRequest from "../../../models/IObjectSearchRequest";
 
 const SearchForm = () => {
-    const [inn, setInn] = useState("");
-    const [tonality, setTonality] = useState("Любая");
-    const [docCount, setDocCount] = useState("");
-    const [dateTo, setDateTo] = useState("");
-    const [dateFrom, setDateFrom] = useState("");
-    const [isActiveForm, setIsActiveForm] = useState(false);
+    const [inn, setInn] = useState<string>("");
+    const [tonality, setTonality] = useState<string>("any");
+    const [docCount, setDocCount] = useState<number>(0);
+    const [dateTo, setDateTo] = useState<Date|null>(null);
+    const [dateFrom, setDateFrom] = useState<Date|null>(null);
+    const [isActiveForm, setIsActiveForm] = useState<boolean>(false);
 
-    const [innError, setInnError] = useState(false);
-    const [docCountError, setDocCountError] = useState(false);
-    const [dateFromError, setDateFromError] = useState(false);
-    const [dateToError, setDateToError] = useState(false);
-    const [datesError, setDatesError] = useState(false);
+    const [innError, setInnError] = useState<boolean | string>(false);
+    const [docCountError, setDocCountError] = useState<boolean | string>(false);
+    const [dateFromError, setDateFromError] = useState<boolean | String>(false);
+    const [dateToError, setDateToError] = useState<boolean | string>(false);
+    const [datesError, setDatesError] = useState<boolean | string>(false);
+
+    const [checkboxes, setCheckboxes] = useState({
+        fullness: false,
+        businessNews: false,
+        mainRole: false,
+        riskFactors: false,
+        techNews: false,
+        announcements: false,
+        digests: false,
+    });
 
     const innHandle = (e) => {
         setInn(e.target.value);
@@ -67,10 +79,10 @@ const SearchForm = () => {
     }
 
     const tonalityHandle = (e) => {
-        setTonality(e.target.options[e.target.selectedIndex].text);
+        setTonality(e.target.value);
     };
     const docCountHandle = (e) => {
-        setDocCount(e.target.value);
+        setDocCount(parseInt(e.target.value));
     };
 
     const blurDocCount = (e) => {
@@ -97,12 +109,14 @@ const SearchForm = () => {
                 return `0${num}`;
             }
             return num;
-        }
+        };
 
-        let fullDate = `${date.getFullYear()}-${numWithZero(date.getMonth() + 1)}-${numWithZero(date.getDate())}`;
+        let fullDate = `${date.getFullYear()}-${numWithZero(
+            date.getMonth() + 1
+        )}-${numWithZero(date.getDate())}`;
 
         return fullDate;
-    }
+    };
 
     const dateFromHandle = (e) => {
         setDateFrom(e);
@@ -112,9 +126,14 @@ const SearchForm = () => {
         if (!e) {
             setDateFromError(true);
             setDatesError("Обязательные поля");
-        } else if (dateTo && dateFrom.getTime() > dateTo.getTime()) {
-            setDateFromError(true);
-            setDatesError("Введите корректные данные");
+        } else if (dateTo && dateFrom !== null) {
+            if (dateFrom.getTime() > dateTo.getTime()) {
+                setDateFromError(true);
+                setDatesError("Введите корректные данные");
+            } else {
+                setDateFromError(false);
+                setDateToError(false);
+            }
         } else {
             setDateFromError(false);
         }
@@ -128,9 +147,14 @@ const SearchForm = () => {
         if (!e) {
             setDateToError(true);
             setDatesError("Обязательные поля");
-        } else if (dateFrom && dateTo.getTime() < dateFrom.getTime()) {
-            setDateToError(true)
-            setDatesError("Введите корректные данные");
+        } else if (dateFrom && dateTo !== null) {
+            if (dateTo.getTime() < dateFrom.getTime()) {
+                setDateToError(true);
+                setDatesError("Введите корректные данные");
+            } else {
+                setDateFromError(false);
+                setDateToError(false);
+            }
         } else {
             setDateToError(false);
         }
@@ -138,21 +162,13 @@ const SearchForm = () => {
 
     useEffect(() => {
         if (
-            inn &&
-            tonality &&
-            docCount &&
-            dateFrom &&
-            dateTo &&
-            !innError &&
-            !docCountError &&
-            !dateFromError &&
-            !dateToError
+            inn && tonality && docCount && dateFrom && dateTo &&
+            !innError && !docCountError && !dateFromError && !dateToError
         ) {
             setIsActiveForm(true);
         } else {
             setIsActiveForm(false);
         }
-
     }, [
         inn,
         tonality,
@@ -165,17 +181,71 @@ const SearchForm = () => {
         dateToError,
     ]);
 
+    const checkboxesHandle = (e) => {
+        setCheckboxes({
+            ...checkboxes,
+            [e.target.name]: e.target.checked,
+        });
+    };
+
     useEffect(() => {
-        console.log("ding")
         if (!dateFromError && !dateToError) {
-            console.log("ok")
             setDatesError(false);
         }
     }, [dateFromError, dateToError]);
 
     const submitHandle = (e) => {
         e.preventDefault();
-        console.log(inn, tonality, docCount, getFullFormatDate(dateFrom), getFullFormatDate(dateTo));
+
+        let requestData: IObjectSearchRequest = {
+            intervalType: "month",
+            histogramTypes: ["totalDocuments", "riskFactors"],
+            issueDateInterval: {
+                startDate: getFullFormatDate(dateFrom),
+                endDate: getFullFormatDate(dateTo),
+            },
+            searchContext: {
+                targetSearchEntitiesContext: {
+                    targetSearchEntities: [
+                        {
+                            type: "company",
+                            inBusinessNews: checkboxes.businessNews
+                                ? true
+                                : false,
+                            sparkId: null,
+                            entityId: null,
+                            inn: inn,
+                            maxFullness: checkboxes.fullness ? true : false,
+                        },
+                    ],
+                    onlyMainRole: checkboxes.mainRole ? true : false,
+                    onlyWithRiskFactors: checkboxes.riskFactors ? true : false,
+                    tonality: tonality,
+                },
+            },
+            // none — без фильтрации, в выдачу включаются все публикации;
+            // duplicates — фильтр по дубликатам, в выдачу включается по одной публикации из каждого кластера дублей.
+            similarMode: "none",
+            limit: docCount,
+            // issueDate — дата публикации;
+            // sourceInfluence — вес источника.
+            sortType: "issueDate",
+            // desc – по убыванию;
+            // asc – по возрастанию.
+            sortDirectionType: "desc",
+            attributeFilters: {
+                excludeTechNews: checkboxes.techNews ? true : false,
+                excludeAnnouncements: checkboxes.announcements ? true : false,
+                excludeDigests: checkboxes.digests ? true : false,
+            },
+        };
+
+        console.log(requestData);
+
+        let res = api.post("/objectsearch/histograms", requestData);
+        res.then(function (response) {
+            console.log(response.data);
+        });
     };
 
     return (
@@ -201,7 +271,11 @@ const SearchForm = () => {
                     >
                         <Select
                             className="search__input--border search-form__left__select"
-                            options={["Любая", "Позитивная", "Негативная"]}
+                            options={[
+                                { title: "Любая", name: "any" },
+                                { title: "Позитивная", name: "positive" },
+                                { title: "Негативная", name: "negative" },
+                            ]}
                             onChange={tonalityHandle}
                         />
                     </Label>
@@ -227,9 +301,8 @@ const SearchForm = () => {
                     />
                     <div>
                         <div className="search-form__left__inputrow">
-                              <InputDate
+                            <InputDate
                                 classInput=" search__input--border"
-                                classError="search-form__left__error"
                                 placeholder="Дата начала"
                                 onChange={dateFromHandle}
                                 onBlur={blurDateFrom}
@@ -250,7 +323,7 @@ const SearchForm = () => {
                 </div>
             </div>
             <div className="search-form__right">
-                <CheckboxList />
+                <CheckboxList onChange={checkboxesHandle} />
                 <div className="search-form__right__footer">
                     <Button
                         className="search-form__right__footer__button"
