@@ -1,4 +1,4 @@
-export interface ISource {
+export type Source = {
     id: number,
     name: string,
     categoryId: number,

@@ -1,4 +1,4 @@
-export interface ITitle {
+export type Title = {
     text: string,
     markup: string,
 }

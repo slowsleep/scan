@@ -1,17 +1,17 @@
-import { IAuthor, ISource, ITitle, IContent, IAttributes } from "./Document";
+import { Author, Source, Title, Content, Attributes } from "./Document";
 
-export interface IScanDoc {
+export type ScanDoc = {
     schemaVersion: string,
     id: string,
     version: number,
     issueDate: Date,
     url: string,
-    author: IAuthor,
-    source: ISource,
+    author: Author,
+    source: Source,
     dedupClusterId: string,
-    title: ITitle,
-    content: IContent,
-    attributes: IAttributes,
+    title: Title,
+    content: Content,
+    attributes: Attributes,
     language: string,
 }
 

@@ -1,8 +1,8 @@
-export interface IAttributes {
-    isTechNews: boolean,
-    isAnnouncement: boolean,
-    isDigest: boolean,
-    wordCount: number,
+export type Attributes = {
+    isTechNews?: boolean,
+    isAnnouncement?: boolean,
+    isDigest?: boolean,
+    wordCount?: number,
 }
 
 // influence 	В рамках данного проекта не используется.

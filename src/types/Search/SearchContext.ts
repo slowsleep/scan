@@ -1,7 +1,7 @@
-import ITargetSearchEntitiesContext from "./ITargetSearchEntitiesContext";
+import { TargetSearchEntitiesContext } from "./TargetSearchEntitiesContext";
 
-export interface ISearchContext {
-    targetSearchEntitiesContext: ITargetSearchEntitiesContext,
+export type SearchContext = {
+    targetSearchEntitiesContext: TargetSearchEntitiesContext,
 }
 
 // searchEntitiesFilter?: Search.Filter<Search.Entities.SearchEntity>,
