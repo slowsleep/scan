@@ -1,5 +1,5 @@
-import { DateInterval, SearchContext } from '@types/Search';
-import { Attributes } from "@types/Filter/Attributes";
+import { DateInterval, SearchContext } from '@mytypes/Search';
+import { Attributes } from "@mytypes/Filter/Attributes";
 
 // for POST /api/v1/objectsearch/histograms
 export default interface IObjectSearchRequest {

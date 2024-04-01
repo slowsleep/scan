@@ -1,8 +1,8 @@
-import React from "react";
-import { IEventFiltersInfo } from "../../models/IEventFiltersInfo";
+import { EventFiltersInfo } from "@mytypes/";
+
 import "./AccountLimits.css";
 
-const AccountLimits = ({info}: {info:IEventFiltersInfo}) => {
+const AccountLimits = ({info}: {info:EventFiltersInfo}) => {
   return (
     <div className="account-limits">
         <p className="account-limits__text">Использовано компаний </p>
