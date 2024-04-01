@@ -3,6 +3,8 @@ export type Attributes = {
     isAnnouncement?: boolean,
     isDigest?: boolean,
     wordCount?: number,
+    influence?: any,
+    coverage?: any,
 }
 
 // influence 	В рамках данного проекта не используется.
