@@ -1,5 +1,5 @@
 import "./Footer.css";
-import whiteLogo from "../../assets/img/white-logo.svg";
+import whiteLogo from "@assets/img/white-logo.svg";
 
 const Footer = () => {
     return (

@@ -1,6 +1,11 @@
 import "./InfoCard.css";
 
-const InfoCard = ({logo, title}) => {
+interface InfoCardProps {
+  logo: string,
+  title: string
+}
+
+const InfoCard = ({logo, title}: InfoCardProps) => {
   return (
     <div className="infocard">
         <img src={logo} alt="icon" />

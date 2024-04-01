@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import tables from "../../assets/img/tables.png";
-import bubbles from "../../assets/img/bubbles.png";
-import timer from "../../assets/img/timer.svg";
-import search from "../../assets/img/search.svg";
-import protect from "../../assets/img/protect.svg";
-import lamp from "../../assets/img/lamp.svg";
-import target from "../../assets/img/target-small.svg";
-import laptop from "../../assets/img/laptop.svg";
+import tables from "@assets/img/tables.png";
+import bubbles from "@assets/img/bubbles.png";
+import timer from "@assets/img/timer.svg";
+import search from "@assets/img/search.svg";
+import protect from "@assets/img/protect.svg";
+import lamp from "@assets/img/lamp.svg";
+import target from "@assets/img/target-small.svg";
+import laptop from "@assets/img/laptop.svg";
 import "./Home.css";
-import { Button, InfoCard, TariffСard, CustomNextArrow, CustomPrevArrow } from "../../components/";
+import { Button, InfoCard, TariffСard, CustomNextArrow, CustomPrevArrow } from "@components/";
 
 
 const Home = () => {
 
-    let sliderSettings = {
+    let sliderSettings: Settings = {
         infinite: true,
         speed: 500,
         nextArrow: <CustomNextArrow />,

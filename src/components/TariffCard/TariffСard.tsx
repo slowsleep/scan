@@ -1,5 +1,18 @@
 import "./TariffСard.css";
-import { Button } from "../";
+import { Button } from "@components/";
+
+interface TariffСardProps {
+    title: string,
+    description: string,
+    icon: string,
+    price: string,
+    oldPrice: string,
+    priceInfo?: string,
+    tariffIncludes: string[],
+    current?: boolean,
+    color: string,
+}
+
 
 const TariffСard = ({
     title,
@@ -11,7 +24,7 @@ const TariffСard = ({
     tariffIncludes,
     current = false,
     color,
-}) => {
+}: TariffСardProps) => {
     let cardAdditionalStyles;
     let cardHeaderAdditionalStyles;
     let cartBg;

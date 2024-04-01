@@ -1,8 +1,8 @@
 import "./Search.css";
 import SearchForm from "./SearchForm/SearchForm";
-import racket from "../../assets/img/racket.png";
-import document from "../../assets/img/document.png";
-import folders from "../../assets/img/folders.png";
+import racket from "@assets/img/racket.png";
+import document from "@assets/img/document.png";
+import folders from "@assets/img/folders.png";
 
 const Search = () => {
     return (

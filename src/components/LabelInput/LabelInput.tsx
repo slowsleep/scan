@@ -1,5 +1,21 @@
 import "./LabelInput.css";
-import { Input, Label } from "../";
+import { Input, Label } from "@components/";
+
+interface LabelInputProps {
+    label: string,
+    placeholder?: string,
+    type?: string,
+    name?: string,
+    className?: string,
+    classLabel?: string,
+    classInput?: string,
+    classError?: string,
+    required?: boolean,
+    labelRequired?: boolean,
+    error?: string | boolean,
+    onChange?: (e:any) => void,
+    onBlur?: (e:any) => void,
+}
 
 /**
  * Подходит для input с type = "text", "checkbox"
@@ -9,18 +25,18 @@ import { Input, Label } from "../";
 const LabelInput = ({
     label,
     placeholder,
-    type,
+    type="text",
     name,
     className,
     classLabel,
     classInput,
-    classError=false,
+    classError,
     required = false,
     labelRequired = false,
     onChange,
     onBlur,
     error=false,
-}) => {
+}: LabelInputProps) => {
 
     function handleChange(e) {
         if (type === "checkbox") {
@@ -29,7 +45,10 @@ const LabelInput = ({
                 "label--checked"
             );
         }
-        onChange(e);
+
+        if (typeof onChange === "function") {
+            onChange(e);
+        }
     }
 
     return (

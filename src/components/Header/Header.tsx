@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../api";
+import api from "@api/";
 import { useAuth } from "../../hook/useAuth";
 import "./Header.css";
-import logo from "../../assets/img/logo.svg";
-import whiteLogo from "../../assets/img/white-logo.svg";
-import { AccountLimits, Button } from "../";
+import logo from "@assets/img/logo.svg";
+import whiteLogo from "@assets/img/white-logo.svg";
+import { AccountLimits, Button } from "@components/";
+import { EventFiltersInfo } from "@mytypes/";
 
 const Header = () => {
     const {auth, signOut} = useAuth();
-    const [accountLimits, setAccountLimits] = useState({});
+    const [accountLimits, setAccountLimits] = useState<EventFiltersInfo>({} as EventFiltersInfo);
 
     useEffect(() => {
         if (auth && JSON.stringify(accountLimits) === "{}") {
@@ -19,17 +20,18 @@ const Header = () => {
         }
     }, [auth, accountLimits])
 
-
     const openBurgerHandler = () => {
-        let header = document.querySelector(".header");
-        let burgerMenu = document.querySelector(".burger-menu");
+        let header: HTMLElement | null = document.querySelector(".header");
+        let burgerMenu: HTMLElement | null = document.querySelector(".burger-menu");
+        if (!header || !burgerMenu) return;
         header.style.display = "none";
         burgerMenu.style.display = "block";
     };
 
     const closeBurgerHandler = () => {
-        let header = document.querySelector(".header");
-        let burgerMenu = document.querySelector(".burger-menu");
+        let header: HTMLElement | null = document.querySelector(".header");
+        let burgerMenu: HTMLElement | null = document.querySelector(".burger-menu");
+        if (!header || !burgerMenu) return;
         burgerMenu.style.display = "none";
         header.style.display = "flex";
     };
@@ -102,7 +104,6 @@ const Header = () => {
                             className="header__regbtn"
                             title="Зарегистрироваться"
                             size="small"
-                            color="white"
                             disabled={true}
                         />
                         <Link

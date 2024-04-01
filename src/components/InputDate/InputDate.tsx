@@ -1,15 +1,26 @@
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import arrow from "../../assets/img/arrow-down.svg";
+import arrow from "@assets/img/arrow-down.svg";
 import "./InputDate.css";
 
-const InputDate = ({classInput, className, placeholder, error, onChange, onBlur}) => {
-    const [startDate, setStartDate] = useState(null);
+interface InputDateProps {
+    classInput?: string,
+    className?: string,
+    placeholder?: string,
+    error?: boolean | string,
+    onChange?: (e: any) => void,
+    onBlur?: (e: any) => void,
+}
+
+const InputDate = ({classInput, className, placeholder, error, onChange, onBlur}: InputDateProps) => {
+    const [startDate, setStartDate] = useState<Date|null>(null);
 
     const onChangeHandle = (e) => {
         setStartDate(e);
-        onChange(e);
+        if (typeof onChange === "function"){
+            onChange(e);
+        }
     }
 
     return (

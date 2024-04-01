@@ -1,7 +1,7 @@
-import leftArrow from "../../assets/img/arrow-left.svg";
+import leftArrow from "@assets/img/arrow-left.svg";
+import CustomArrow from "./CustomArrow";
 
-const CustomPrevArrow = (props) => {
-    const { className, onClick } = props;
+const CustomPrevArrow = ({ className, onClick }: CustomArrow) => {
     return (
         <div className={className} onClick={onClick}>
             <img src={leftArrow} alt="назад" />

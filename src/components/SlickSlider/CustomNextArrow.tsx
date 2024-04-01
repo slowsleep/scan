@@ -1,7 +1,7 @@
-import rightArrow from "../../assets/img/arrow-right.svg";
+import rightArrow from "@assets/img/arrow-right.svg";
+import CustomArrow from "./CustomArrow";
 
-const CustomNextArrow = (props) => {
-    const { className, onClick } = props;
+const CustomNextArrow = ({ className, onClick }: CustomArrow) => {
     return (
         <div className={className} onClick={onClick}>
             <img src={rightArrow} alt="далее" />

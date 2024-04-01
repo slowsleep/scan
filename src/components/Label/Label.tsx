@@ -1,4 +1,11 @@
-const Label = ({className, title, children, required=false}) => {
+interface LabelProps {
+  className?: string,
+  title: string,
+  children?: any,
+  required?: boolean,
+}
+
+const Label = ({className, title, children, required=false}: LabelProps) => {
   let labelClass = "label ";
   if (required) {
       labelClass += "label--required ";
