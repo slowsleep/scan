@@ -1,15 +1,38 @@
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "./SummaryTable.css";
-import { CustomNextArrow, CustomPrevArrow } from "../../../components/";
+import { CustomNextArrow, CustomPrevArrow } from "@components/";
+import IObjectSearchResponse from "../../../models/IObjectSearchResponse";
+import { DateTable } from "../../../utils/DateFormat";
 
-const SummaryTable = ({periodList}) => {
+type DateInfo = {
+    date: Date,
+    total: number,
+    risk: number,
+}
+
+const SummaryTable = ({periodList}: {periodList: IObjectSearchResponse}) => {
+    let totalDocuments = periodList.data[0].data
+    let riskFactors = periodList.data[1].data
+
+    let riskTotalDocs: Array<DateInfo> = [];
+
+    for (let dock of totalDocuments) {
+        for (let risk of riskFactors) {
+            if (dock.date.getTime() === risk.date.getTime()) {
+                let o = { date: dock.date, total: dock.value, risk: risk.value };
+                riskTotalDocs.push(o);
+            }
+        }
+    }
+
     let sliderSettings = {
         infinite: true,
         speed: 500,
         slidesToScroll: 1,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
+        slidesToShow: 1,
     };
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -25,13 +48,19 @@ const SummaryTable = ({periodList}) => {
         window.removeEventListener('resize', handleResize);
 
         // адаптивное изменение положения стрелки "назад" для карусели в таблице
-        let prev = document.querySelector(".slick-prev");
+        let prev: HTMLElement | null = document.querySelector(".slick-prev");
 
-        if (windowWidth <= 1200) {
+        if (prev && windowWidth <= 1200) {
             prev.style.left = `-30px`;
         } else {
-            let theadWidth = document.querySelector(".summary-table thead tr").clientWidth;
-            prev.style.left = `-${theadWidth + 30}px`;
+            let thead: HTMLElement | null = document.querySelector(".summary-table thead tr");
+            if (thead) {
+                let theadWidth: number | null = thead.clientWidth;
+
+                if (theadWidth && prev) {
+                    prev.style.left = `-${theadWidth + 30}px`;
+                }
+            }
         }
       };
 
@@ -56,11 +85,11 @@ const SummaryTable = ({periodList}) => {
                 </thead>
                 <tbody>
                     <Slider {...sliderSettings}>
-                        {periodList.map((item) => (
-                            <tr key={item}>
-                                <td>{item.period}</td>
-                                <td>{item.all}</td>
-                                <td>{item.risks}</td>
+                        {riskTotalDocs.map((item) => (
+                            <tr key={DateTable(item.date)}>
+                                <td>{DateTable(item.date)}</td>
+                                <td>{item.total}</td>
+                                <td>{item.risk}</td>
                             </tr>
                         ))}
                     </Slider>

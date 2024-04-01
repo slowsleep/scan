@@ -24,7 +24,7 @@
 
 .document-card__content > h1 {
     font-family: "Inter";
-    font-size: 26px;
+    font-size: 26px !important;
 }
 
 .document-card__footer {

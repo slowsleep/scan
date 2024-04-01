@@ -11,6 +11,7 @@ import {
 } from "@components/";
 import api from "@api/";
 import IObjectSearchRequest from "../../../models/IObjectSearchRequest";
+import { getFullFormatDate } from "../../../utils/DateFormat";
 
 const SearchForm = () => {
     const [inn, setInn] = useState<string>("");
@@ -103,21 +104,6 @@ const SearchForm = () => {
         }
     };
 
-    const getFullFormatDate = (date) => {
-        const numWithZero = (num) => {
-            if (num.toString().length < 2) {
-                return `0${num}`;
-            }
-            return num;
-        };
-
-        let fullDate = `${date.getFullYear()}-${numWithZero(
-            date.getMonth() + 1
-        )}-${numWithZero(date.getDate())}`;
-
-        return fullDate;
-    };
-
     const dateFromHandle = (e) => {
         setDateFrom(e);
     };
@@ -201,8 +187,8 @@ const SearchForm = () => {
             intervalType: "month",
             histogramTypes: ["totalDocuments", "riskFactors"],
             issueDateInterval: {
-                startDate: getFullFormatDate(dateFrom),
-                endDate: getFullFormatDate(dateTo),
+                startDate: getFullFormatDate(dateFrom as Date),
+                endDate: getFullFormatDate(dateTo as Date),
             },
             searchContext: {
                 targetSearchEntitiesContext: {
