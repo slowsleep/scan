@@ -12,8 +12,12 @@ import {
 import api from "@api/";
 import IObjectSearchRequest from "../../../models/IObjectSearchRequest";
 import { getFullFormatDate } from "../../../utils/DateFormat";
+import { useNavigate } from "react-router-dom";
+import IObjectSearchResponse from "models/IObjectSearchResponse";
 
 const SearchForm = () => {
+    const navigate = useNavigate();
+
     const [inn, setInn] = useState<string>("");
     const [tonality, setTonality] = useState<string>("any");
     const [docCount, setDocCount] = useState<number>(0);
@@ -226,12 +230,14 @@ const SearchForm = () => {
             },
         };
 
-        console.log(requestData);
+        let responseData: IObjectSearchResponse;
 
         let res = api.post("/objectsearch/histograms", requestData);
         res.then(function (response) {
-            console.log(response.data);
+            responseData = response.data;
+            navigate("/search/result", {state: {histograms: responseData}})
         });
+
     };
 
     return (

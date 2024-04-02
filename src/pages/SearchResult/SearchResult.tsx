@@ -1,11 +1,15 @@
-import "./SearchOutput.css";
+import "./SearchResult.css";
 import SummaryTable from "./SummaryTable/SummaryTable";
 import womanTarget from "@assets/img/woman-target.png";
 import { Button, DocumentСard } from "@components/";
-import { mockSummary } from "../../utils/mock/mockSummary";
 import { mockDocuments } from "../../utils/mock/mockDocuments";
+import IObjectSearchResponse from "models/IObjectSearchResponse";
+import {useLocation} from 'react-router-dom';
 
-const SearchOutput = () => {
+const SearchResult = () => {
+    const location = useLocation();
+    const {histograms}: {histograms: IObjectSearchResponse} = location.state;
+
     return (
         <div className="search-output">
             <div className="search-output__loading">
@@ -24,8 +28,11 @@ const SearchOutput = () => {
             </div>
             <div className="search-output__summary">
                 <h2>Общая сводка</h2>
-                <p>Найдено 4 221 вариантов</p>
-                <SummaryTable periodList={mockSummary} />
+                {histograms.data.length === 0 ? <p>Ничего не нашли</p> :
+                    <>
+                        <SummaryTable periodList={histograms} />
+                    </>
+                }
             </div>
             <div className="search-output__doclist">
                 <h2>Список документов</h2>
@@ -45,4 +52,4 @@ const SearchOutput = () => {
     );
 };
 
-export default SearchOutput;
+export default SearchResult;

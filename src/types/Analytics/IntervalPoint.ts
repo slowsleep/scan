@@ -1,4 +1,4 @@
 export type IntervalPoint = {
-    date: Date,
+    date: string,
     value: number,
 }

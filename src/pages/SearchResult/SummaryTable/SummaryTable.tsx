@@ -19,9 +19,9 @@ const SummaryTable = ({periodList}: {periodList: IObjectSearchResponse}) => {
 
     for (let dock of totalDocuments) {
         for (let risk of riskFactors) {
-            if (dock.date.getTime() === risk.date.getTime()) {
-                let o = { date: dock.date, total: dock.value, risk: risk.value };
-                riskTotalDocs.push(o);
+            if (new Date(dock.date).getTime() === new Date(risk.date).getTime()) {
+                let periodInfo: DateInfo = { date: new Date(dock.date), total: dock.value, risk: risk.value };
+                riskTotalDocs.push(periodInfo);
             }
         }
     }
@@ -70,11 +70,16 @@ const SummaryTable = ({periodList}: {periodList: IObjectSearchResponse}) => {
     if (windowWidth <= 1200) {
         sliderSettings.slidesToShow = 1;
     } else if (windowWidth > 1200) {
-        sliderSettings.slidesToShow = 8;
+        if (riskTotalDocs.length < 8) {
+            sliderSettings.slidesToShow = riskTotalDocs.length;
+        } else {
+            sliderSettings.slidesToShow = 8;
+        }
     }
 
     return (
         <>
+            <p>Найдено {riskTotalDocs.length} вариантов</p>
             <table className="summary-table">
                 <thead>
                     <tr>
