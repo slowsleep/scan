@@ -14,6 +14,7 @@ import IObjectSearchRequest from "../../../models/IObjectSearchRequest";
 import { getFullFormatDate } from "../../../utils/DateFormat";
 import { useNavigate } from "react-router-dom";
 import IObjectSearchResponse from "models/IObjectSearchResponse";
+import IDocumentsIdsResponse from "models/IDocumentsIdsResponse";
 
 const SearchForm = () => {
     const navigate = useNavigate();
@@ -230,12 +231,19 @@ const SearchForm = () => {
             },
         };
 
-        let responseData: IObjectSearchResponse;
+        let dataHistograms: IObjectSearchResponse;
+        let dataDocumentsIds: IDocumentsIdsResponse;
 
-        let res = api.post("/objectsearch/histograms", requestData);
-        res.then(function (response) {
-            responseData = response.data;
-            navigate("/search/result", {state: {histograms: responseData}})
+        let getHistograms = api.post("/objectsearch/histograms", requestData);
+        getHistograms.then(function (response) {
+            dataHistograms = response.data;
+            let resDocsIDs = api.post("/objectsearch", requestData);
+
+            resDocsIDs.then(function (response) {
+                console.log("resDocsIDs", response.data);
+                dataDocumentsIds = response.data;
+                navigate("/search/result", {state: {histograms: dataHistograms, documentsIds: dataDocumentsIds}});
+            });
         });
 
     };
