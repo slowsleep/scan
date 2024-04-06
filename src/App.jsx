@@ -1,11 +1,13 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import { RequireAuth } from "./hoc/RequireAuth";
-import { AuthProvider } from "./hoc/AuthProvider";
 import { Layout } from "./components/";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import Search from "./pages/Search/Search";
 import SearchResult from "./pages/SearchResult/SearchResult";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { checkAuth } from "./features/auth/authActions";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
@@ -17,10 +19,17 @@ const router = createBrowserRouter(createRoutesFromElements(
 ));
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        let token = localStorage.getItem("token");
+        if (token) {
+            dispatch(checkAuth());
+        }
+    }, [])
+
     return (
-        <AuthProvider>
-            <RouterProvider router={router} />
-        </AuthProvider>
+        <RouterProvider router={router} />
     );
 }
 
