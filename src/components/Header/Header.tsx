@@ -1,24 +1,35 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "@api/";
-import { useAuth } from "../../hook/useAuth";
 import "./Header.css";
 import logo from "@assets/img/logo.svg";
 import whiteLogo from "@assets/img/white-logo.svg";
 import { AccountLimits, Button } from "@components/";
 import { EventFiltersInfo } from "@mytypes/";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../../features/auth/authSlice";
+import { getLimit } from "../../features/user/userActions";
 
 const Header = () => {
-    const {auth, signOut} = useAuth();
-    const [accountLimits, setAccountLimits] = useState<EventFiltersInfo>({} as EventFiltersInfo);
+    const dispatch = useDispatch();
+    const { isAuth } = useSelector((state: any) => state.auth);
+    const { data } = useSelector((state: any) => state.user);
+    const [accountLimits, setAccountLimits] = useState<EventFiltersInfo>(
+        {} as EventFiltersInfo
+    );
 
     useEffect(() => {
-        if (auth && JSON.stringify(accountLimits) === "{}") {
-            api.get("account/info").then((res) => {
-                setAccountLimits(res.data.eventFiltersInfo);
-            });
+        if (isAuth) {
+            dispatch(getLimit());
         }
-    }, [auth, accountLimits])
+    }, [isAuth]);
+
+    useEffect(() => {
+        if (isAuth) {
+            if (data) {
+                setAccountLimits(data as EventFiltersInfo);
+            }
+        }
+    }, [data]);
 
     const openBurgerHandler = () => {
         let header: HTMLElement | null = document.querySelector(".header");
@@ -52,30 +63,35 @@ const Header = () => {
                             FAQ
                         </Link>
                     </nav>
-                    {auth ? <AccountLimits info={accountLimits} /> : null}
+                    {isAuth ? <AccountLimits info={accountLimits} /> : null}
                     <div className="header__right__login">
-                        {!auth ?
-                        <>
-                            <Button
-                                className="header__regbtn"
-                                title="Зарегистрироваться"
-                                size="small"
-                                disabled={true}
-                                />
-                            <div className="vertical-line"></div>
-                            <Link to="/login">
+                        {!isAuth ? (
+                            <>
                                 <Button
-                                    title="Войти"
+                                    className="header__regbtn"
+                                    title="Зарегистрироваться"
+                                    size="small"
+                                    disabled={true}
+                                />
+                                <div className="vertical-line"></div>
+                                <Link to="/login">
+                                    <Button
+                                        title="Войти"
+                                        size="small"
+                                        color="light-green"
+                                    />
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Button
+                                    title="Выйти"
                                     size="small"
                                     color="light-green"
-                                    />
-                            </Link>
-                        </>
-                        :
-                        <>
-                            <Button title="Выйти" size="small" color="light-green" onClick={signOut}/>
-                        </>
-                        }
+                                    onClick={() => dispatch(signOut())}
+                                />
+                            </>
+                        )}
                     </div>
                     <button
                         className="header__burger"
@@ -98,33 +114,35 @@ const Header = () => {
                         <Link to="#">FAQ</Link>
                     </div>
                     <div className="burger-menu__main__btns">
-                        {!auth ?
-                        <>
-                        <Button
-                            className="header__regbtn"
-                            title="Зарегистрироваться"
-                            size="small"
-                            disabled={true}
-                        />
-                        <Link
-                            className="burger-menu__main__btns__login"
-                            to="/login"
-                        >
-                            <Button
-                                title="Войти"
-                                size="large"
-                                color="light-green"
-                            />
-                        </Link>
-                        </> :
-                        <>
-                            <Button
+                        {!isAuth ? (
+                            <>
+                                <Button
+                                    className="header__regbtn"
+                                    title="Зарегистрироваться"
+                                    size="small"
+                                    disabled={true}
+                                />
+                                <Link
+                                    className="burger-menu__main__btns__login"
+                                    to="/login"
+                                >
+                                    <Button
+                                        title="Войти"
+                                        size="large"
+                                        color="light-green"
+                                    />
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Button
                                     title="Выйти"
                                     size="large"
                                     color="light-green"
-                                    onClick={signOut}
-                            />
-                        </>}
+                                    onClick={() => dispatch(signOut())}
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
             </header>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../../hook/useAuth";
-import api from "../../../api";
 import google from "../../../assets/img/google.svg";
 import facebook from "../../../assets/img/facebook.svg";
 import yandex from "../../../assets/img/yandex.svg";
 import lock from "../../../assets/img/lock.svg";
 import "./SignInForm.css";
 import { Form, Button, LabelInput } from "../../../components/";
+import { useSelector, useDispatch } from "react-redux";
+import { signIn } from "../../../features/auth/authActions";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
     const [login, setLogin] = useState("");
@@ -15,7 +16,9 @@ const SignInForm = () => {
     const [passwordError, setPasswordError] = useState(false);
     const [isFormActive, setIsFormActive] = useState(false);
 
-    const {signIn} = useAuth();
+    const { isAuth, errorAuth } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         setLogin(e.target.value);
@@ -36,15 +39,18 @@ const SignInForm = () => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        let result = api.post("/account/login", {login, password});
-        result.then(function(response) {
-            signIn(response.data.accessToken, response.data.expire);
-        }).catch(function() {
-            setPasswordError("Неправильный пароль");
-        });
+        dispatch(signIn({login, password}));
     };
+
+    useEffect(() => {
+        if (isAuth) {
+          navigate("/");
+        } else if (errorAuth) {
+          setPasswordError("Неправильный пароль");
+        }
+    }, [isAuth, errorAuth]);
 
     useEffect(() => {
         if (login && password) {
