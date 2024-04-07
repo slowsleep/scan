@@ -53,7 +53,7 @@ const LabelInput = ({
 
     return (
         <div className={(className ? className : "")}>
-            <Label className={ (classLabel ? classLabel : "")} title={label} required={labelRequired} />
+            <Label className={ (classLabel ? classLabel : "")} title={label} required={labelRequired} error={error} />
             <Input
                 className={(classInput ? classInput : "")}
                 classError={(classError ? classError : "")}

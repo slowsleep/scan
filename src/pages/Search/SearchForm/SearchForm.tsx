@@ -298,6 +298,7 @@ const SearchForm = () => {
                         className="search-form__left__label search-form__left__label-dates"
                         title="Диапазон поиска"
                         required={true}
+                        error={datesError}
                     />
                     <div>
                         <div className="search-form__left__inputrow">

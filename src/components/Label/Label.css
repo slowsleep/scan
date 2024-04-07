@@ -1,0 +1,8 @@
+.label--required::after {
+    content: ' *';
+    font-size: 25px;
+}
+
+.label--error::after {
+    color: red;
+}
