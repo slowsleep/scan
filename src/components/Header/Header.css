@@ -47,6 +47,29 @@
     text-decoration: underline;
 }
 
+.header__right__user-logout {
+    display: flex;
+    flex-direction: column;
+    margin-right: .3em;
+}
+
+.header__right__user-logout > p {
+    margin: 0;
+}
+
+.header__right__user-logout > a {
+    color: gray;
+    float: right;
+    background: transparent;
+    font-size: 10px;
+    text-align: end;
+    cursor: pointer;
+}
+
+.header__right__user-logout > a:hover {
+    filter: brightness(50%);
+}
+
 .header__burger {
     display: none;
     border: none;

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "@assets/img/logo.svg";
 import whiteLogo from "@assets/img/white-logo.svg";
+import userAvatar from "@assets/img/userAvatar.svg";
 import { AccountLimits, Button } from "@components/";
 import { EventFiltersInfo } from "@mytypes/";
 import { useSelector, useDispatch } from "react-redux";
-import { signOut } from "../../features/auth/authSlice";
-import { getLimit } from "../../features/user/userActions";
+import { signOut } from "@features/auth/authSlice";
+import { getLimit } from "@features/user/userActions";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -84,12 +85,11 @@ const Header = () => {
                             </>
                         ) : (
                             <>
-                                <Button
-                                    title="Выйти"
-                                    size="small"
-                                    color="light-green"
-                                    onClick={() => dispatch(signOut())}
-                                />
+                                <div className="header__right__user-logout">
+                                    <p>Алексей А.</p>
+                                    <a onClick={() => dispatch(signOut())}>Выйти</a>
+                                </div>
+                                <img src={userAvatar} alt="" />
                             </>
                         )}
                     </div>
