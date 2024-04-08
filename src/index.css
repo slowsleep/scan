@@ -38,15 +38,6 @@ body {
   font-size: 12px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media only screen and (max-width:1200px){
   .main {
     padding: 0 1em;

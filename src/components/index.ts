@@ -13,4 +13,5 @@ export { Select } from "./Select/Select";
 export { CustomNextArrow } from "./SlickSlider/CustomNextArrow";
 export { CustomPrevArrow } from "./SlickSlider/CustomPrevArrow";
 export { TariffСard } from "./TariffCard/TariffСard";
+export { Spinner } from "./Spinner/Spinner";
 export { Layout } from "./Layout/Layout";
