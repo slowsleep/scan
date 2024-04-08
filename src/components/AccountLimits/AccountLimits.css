@@ -37,6 +37,7 @@
 .account-limits__spinner {
     margin-left: auto;
     margin-right: auto;
+    animation: logo-spin infinite 3s linear;
 }
 
 @media only screen and (max-width:1200px){
