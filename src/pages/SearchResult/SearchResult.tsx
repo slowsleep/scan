@@ -1,48 +1,28 @@
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./SearchResult.css";
-import SummaryTable from "./SummaryTable/SummaryTable";
 import womanTarget from "@assets/img/woman-target.png";
+import SummaryTable from "./SummaryTable/SummaryTable";
 import { Button, DocumentСard } from "@components/";
-import IObjectSearchResponse from "models/IObjectSearchResponse";
-import {useLocation} from 'react-router-dom';
-import { useEffect } from "react";
-import api from "@api/";
-import IDocumentsIdsResponse from "models/IDocumentsIdsResponse";
-import IDocumentsIdsRequest from "models/IDocumentsIdsRequest";
-import IDocumentResponse from "models/IDocumentResponse";
-import { useState } from "react";
+import IObjectSearchResponse from "@models/IObjectSearchResponse";
+import IDocumentResponse from "@models/IDocumentResponse";
 
 const SearchResult = () => {
-    const location = useLocation();
-    const {histograms}: {histograms: IObjectSearchResponse} = location.state;
-    const {documentsIds}: {documentsIds: IDocumentsIdsResponse} = location.state;
-    let documentsData: IDocumentResponse[] = [];
+    const [histograms, setHistograms] = useState<IObjectSearchResponse>({data: []} as IObjectSearchResponse);
     const [documents, setDocuments] = useState<IDocumentResponse[]>([] as IDocumentResponse[]);
-
-    const docIdstoArrIds = (docsIds: IDocumentsIdsResponse) => {
-        let res: string[] = [];
-
-        if (docsIds.items.length) {
-            res = docsIds.items.map((doc) => doc.encodedId);
-        }
-
-        return res;
-    }
+    const { histograms: companyHistograms, documents: companyDocuments } = useSelector((state: any) => state.company)
 
     useEffect(() => {
-        console.log(docIdstoArrIds(documentsIds));
-        let req: IDocumentsIdsRequest = {
-            ids: docIdstoArrIds(documentsIds),
+        if (companyHistograms) {
+            setHistograms(companyHistograms);
         }
-        
-        let documentsDataRequest = api.post("documents", req);
+    }, [companyHistograms])
 
-        documentsDataRequest.then((response) => {
-            documentsData = response.data;
-            if (documentsData) {
-                setDocuments(documentsData);
-            }
-        });
-    }, [])
+    useEffect(() => {
+        if (companyDocuments) {
+            setDocuments(companyDocuments);
+        }
+    }, [companyDocuments])
 
     return (
         <div className="search-output">

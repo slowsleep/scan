@@ -9,15 +9,15 @@ import {
     LabelInput,
     Select,
 } from "@components/";
-import api from "@api/";
-import IObjectSearchRequest from "../../../models/IObjectSearchRequest";
-import { getFullFormatDate } from "../../../utils/DateFormat";
+import IObjectSearchRequest from "@models/IObjectSearchRequest";
+import { getFullFormatDate } from "@utils/DateFormat";
 import { useNavigate } from "react-router-dom";
-import IObjectSearchResponse from "models/IObjectSearchResponse";
-import IDocumentsIdsResponse from "models/IDocumentsIdsResponse";
+import { useDispatch } from "react-redux";
+import { getHistograms, getDocuments } from "@features/company/companyActions";
 
 const SearchForm = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [inn, setInn] = useState<string>("");
     const [tonality, setTonality] = useState<string>("any");
@@ -231,20 +231,9 @@ const SearchForm = () => {
             },
         };
 
-        let dataHistograms: IObjectSearchResponse;
-        let dataDocumentsIds: IDocumentsIdsResponse;
-
-        let getHistograms = api.post("/objectsearch/histograms", requestData);
-        getHistograms.then(function (response) {
-            dataHistograms = response.data;
-            let resDocsIDs = api.post("/objectsearch", requestData);
-
-            resDocsIDs.then(function (response) {
-                console.log("resDocsIDs", response.data);
-                dataDocumentsIds = response.data;
-                navigate("/search/result", {state: {histograms: dataHistograms, documentsIds: dataDocumentsIds}});
-            });
-        });
+        dispatch(getHistograms({searchObject: requestData}));
+        dispatch(getDocuments({searchObject: requestData}));
+        navigate("/search/result");
 
     };
 
