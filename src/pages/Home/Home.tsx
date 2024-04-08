@@ -13,9 +13,12 @@ import target from "@assets/img/target-small.svg";
 import laptop from "@assets/img/laptop.svg";
 import "./Home.css";
 import { Button, InfoCard, TariffСard, CustomNextArrow, CustomPrevArrow } from "@components/";
+import { useSelector } from "react-redux";
 
 
 const Home = () => {
+
+    let {isAuth} = useSelector((state: any) => state.auth);
 
     let sliderSettings: Settings = {
         infinite: true,
@@ -60,12 +63,15 @@ const Home = () => {
                         формате PDF на электронную почту.
                     </p>
                     <Link to="/search">
-                        <Button
-                            className="desc__left__btn"
-                            title="Запросить данные"
-                            size="large"
-                            color="blue"
-                        />
+                        {isAuth ?
+                            <Button
+                                className="desc__left__btn"
+                                title="Запросить данные"
+                                size="large"
+                                color="blue"
+                            />
+                            : null
+                        }
                     </Link>
                 </div>
                 <div>
@@ -113,7 +119,7 @@ const Home = () => {
                             "Безопасная сделка",
                             "Поддержка 24/7",
                         ]}
-                        current={true}
+                        current={isAuth}
                         color="yellow"
                     />
                     <TariffСard
