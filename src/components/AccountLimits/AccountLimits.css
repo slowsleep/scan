@@ -29,6 +29,16 @@
     color: #8AC540;
 }
 
+.account-limits--loading {
+    grid-template-columns: 150px;
+    grid-template-rows: 50px;
+}
+
+.account-limits__spinner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media only screen and (max-width:1200px){
     .account-limits {
         grid-template-columns: 130px;

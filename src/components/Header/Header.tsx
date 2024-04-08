@@ -13,7 +13,7 @@ import { getLimit } from "@features/user/userActions";
 const Header = () => {
     const dispatch = useDispatch();
     const { isAuth } = useSelector((state: any) => state.auth);
-    const { data } = useSelector((state: any) => state.user);
+    const { data, loading } = useSelector((state: any) => state.user);
     const [accountLimits, setAccountLimits] = useState<EventFiltersInfo>(
         {} as EventFiltersInfo
     );
@@ -64,7 +64,7 @@ const Header = () => {
                             FAQ
                         </Link>
                     </nav>
-                    {isAuth ? <AccountLimits info={accountLimits} /> : null}
+                    {isAuth ? <AccountLimits info={accountLimits} loading={loading} /> : null}
                     <div className="header__right__login">
                         {!isAuth ? (
                             <>
