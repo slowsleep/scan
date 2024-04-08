@@ -4,23 +4,35 @@ import "./SummaryTable.css";
 import { CustomNextArrow, CustomPrevArrow } from "@components/";
 import IObjectSearchResponse from "../../../models/IObjectSearchResponse";
 import { DateTable } from "../../../utils/DateFormat";
+import { Spinner } from "@components/";
 
-type DateInfo = {
-    date: Date,
-    total: number,
-    risk: number,
+interface SummaryTableProps {
+    periodList: IObjectSearchResponse;
+    loading?: boolean;
 }
 
-const SummaryTable = ({periodList}: {periodList: IObjectSearchResponse}) => {
-    let totalDocuments = periodList.data[0].data
-    let riskFactors = periodList.data[1].data
+type DateInfo = {
+    date: Date;
+    total: number;
+    risk: number;
+};
+
+const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
+    let totalDocuments = periodList.data[0].data;
+    let riskFactors = periodList.data[1].data;
 
     let riskTotalDocs: Array<DateInfo> = [];
 
     for (let dock of totalDocuments) {
         for (let risk of riskFactors) {
-            if (new Date(dock.date).getTime() === new Date(risk.date).getTime()) {
-                let periodInfo: DateInfo = { date: new Date(dock.date), total: dock.value, risk: risk.value };
+            if (
+                new Date(dock.date).getTime() === new Date(risk.date).getTime()
+            ) {
+                let periodInfo: DateInfo = {
+                    date: new Date(dock.date),
+                    total: dock.value,
+                    risk: risk.value,
+                };
                 riskTotalDocs.push(periodInfo);
             }
         }
@@ -38,32 +50,34 @@ const SummaryTable = ({periodList}: {periodList: IObjectSearchResponse}) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
 
-      window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
-      return () => {
-        window.removeEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
 
-        // адаптивное изменение положения стрелки "назад" для карусели в таблице
-        let prev: HTMLElement | null = document.querySelector(".slick-prev");
+            // адаптивное изменение положения стрелки "назад" для карусели в таблице
+            let prev: HTMLElement | null =
+                document.querySelector(".slick-prev");
 
-        if (prev && windowWidth <= 1200) {
-            prev.style.left = `-30px`;
-        } else {
-            let thead: HTMLElement | null = document.querySelector(".summary-table thead tr");
-            if (thead) {
-                let theadWidth: number | null = thead.clientWidth;
+            if (prev && windowWidth <= 1200) {
+                prev.style.left = `-30px`;
+            } else {
+                let thead: HTMLElement | null = document.querySelector(
+                    ".summary-table thead tr"
+                );
+                if (thead) {
+                    let theadWidth: number | null = thead.clientWidth;
 
-                if (theadWidth && prev) {
-                    prev.style.left = `-${theadWidth + 30}px`;
+                    if (theadWidth && prev) {
+                        prev.style.left = `-${theadWidth + 30}px`;
+                    }
                 }
             }
-        }
-      };
-
+        };
     }, [windowWidth]);
 
     // адаптивная настройка выводимых элементов в карусели
@@ -89,15 +103,19 @@ const SummaryTable = ({periodList}: {periodList: IObjectSearchResponse}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <Slider {...sliderSettings}>
-                        {riskTotalDocs.map((item) => (
-                            <tr key={DateTable(item.date)}>
-                                <td>{DateTable(item.date)}</td>
-                                <td>{item.total}</td>
-                                <td>{item.risk}</td>
-                            </tr>
-                        ))}
-                    </Slider>
+                    {loading ? (
+                        <Spinner text="Загружаем данные" size="md" />
+                    ) : (
+                        <Slider {...sliderSettings}>
+                            {riskTotalDocs.map((item) => (
+                                <tr key={DateTable(item.date)}>
+                                    <td>{DateTable(item.date)}</td>
+                                    <td>{item.total}</td>
+                                    <td>{item.risk}</td>
+                                </tr>
+                            ))}
+                        </Slider>
+                    )}
                 </tbody>
             </table>
         </>

@@ -10,7 +10,7 @@ import IDocumentResponse from "@models/IDocumentResponse";
 const SearchResult = () => {
     const [histograms, setHistograms] = useState<IObjectSearchResponse>({data: []} as IObjectSearchResponse);
     const [documents, setDocuments] = useState<IDocumentResponse[]>([] as IDocumentResponse[]);
-    const { histograms: companyHistograms, documents: companyDocuments } = useSelector((state: any) => state.company)
+    const { histograms: companyHistograms, documents: companyDocuments, loadingHistograms } = useSelector((state: any) => state.company)
 
     useEffect(() => {
         if (companyHistograms) {
@@ -44,7 +44,7 @@ const SearchResult = () => {
                 <h2>Общая сводка</h2>
                 {histograms.data.length === 0 ? <p>Ничего не нашли</p> :
                     <>
-                        <SummaryTable periodList={histograms} />
+                        <SummaryTable periodList={histograms} loading={loadingHistograms} />
                     </>
                 }
             </div>

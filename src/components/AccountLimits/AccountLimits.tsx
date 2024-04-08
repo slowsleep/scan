@@ -1,7 +1,6 @@
 import { EventFiltersInfo } from "@mytypes/";
-
 import "./AccountLimits.css";
-import spinner from "@assets/img/spinner.svg";
+import { Spinner } from "@components/";
 
 interface AccountLimitsProps {
   info: EventFiltersInfo,
@@ -11,7 +10,7 @@ interface AccountLimitsProps {
 const AccountLimits = ({info, loading} : AccountLimitsProps) => {
   return (
     <div className={"account-limits " + (loading ? "account-limits--loading" : "")}>
-        {loading ? <img className="account-limits__spinner" src={spinner} /> :
+        {loading ? <Spinner/> :
           <>
             <p className="account-limits__text">Использовано компаний </p>
             <p className="account-limits__count">{info.usedCompanyCount}</p>
