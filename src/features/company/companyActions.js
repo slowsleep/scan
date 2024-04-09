@@ -1,5 +1,6 @@
 import api from "@api/";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { docIdsToArrIds } from "@utils/DocumentsDataFormat";
 
 export const getHistograms = createAsyncThunk(
     "company/getHistograms",
@@ -25,18 +26,14 @@ export const getHistograms = createAsyncThunk(
 );
 
 export const getDocuments = createAsyncThunk(
-    "company/getDocumentIds",
+    "company/getDocuments",
     async (
-        { searchObject },
+        { docIDs },
         { rejectWithValue }
     ) => {
         try {
-            const { data: docIdsData }  = await api.post("objectsearch", searchObject);
-
-            if (! await docIdsData.items.length) throw new Error("Идентификаторы документов не найдены");
-
             const requestObject = {
-                ids: docIdstoArrIds(docIdsData),
+                ids: docIdsToArrIds(docIDs),
             };
             const { data } = await api.post("documents", requestObject);
 
@@ -51,12 +48,42 @@ export const getDocuments = createAsyncThunk(
     }
 );
 
-function docIdstoArrIds(docsIds) {
-    let res = [];
+export const getDocumentIds = createAsyncThunk(
+    "company/getDocumentIds",
+    async (
+        { searchObject },
+        { dispatch, rejectWithValue }
+    ) => {
+        try {
+            const { data: docIdsData }  = await api.post("objectsearch", searchObject);
 
-    if (docsIds.items.length) {
-        res = docsIds.items.map((doc) => doc.encodedId);
+            if (! await docIdsData.items.length) throw new Error("Идентификаторы документов не найдены");
+
+            let splitDocIdsBy100;
+
+            if (docIdsData.items.length >= 10) {
+                splitDocIdsBy100 = docIdsData.items.reduce((acc, current, index, array) => {
+                    if (index % 10 === 0) {
+                      acc.push({items: array.slice(index, index + 10)});
+                    }
+                    return acc;
+                }, []);
+
+                for (let sliceDocIDs of splitDocIdsBy100) {
+                    dispatch(getDocuments({docIDs: sliceDocIDs}));
+                }
+            } else {
+                dispatch(getDocuments({docIDs: docIdsData}));
+            }
+
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
     }
+);
 
-    return res;
-};
+

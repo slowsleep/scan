@@ -34,14 +34,15 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2em;
+    margin-top: 4em;
+}
+
+.search-output__doclist__items--loading {
+    grid-template-columns: none;
 }
 
 .search-output__doclist {
-    margin-top: 8em;
-}
-
-.search-output__doclist__items {
-    margin-top: 4em;
+    margin-top: 6em;
 }
 
 .search-output__btn-view-more {

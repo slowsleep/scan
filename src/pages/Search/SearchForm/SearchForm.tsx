@@ -13,7 +13,7 @@ import IObjectSearchRequest from "@models/IObjectSearchRequest";
 import { getFullFormatDate } from "@utils/DateFormat";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getHistograms, getDocuments } from "@features/company/companyActions";
+import { getHistograms, getDocumentIds } from "@features/company/companyActions";
 
 const SearchForm = () => {
     const navigate = useNavigate();
@@ -245,7 +245,7 @@ const SearchForm = () => {
         };
 
         dispatch(getHistograms({ searchObject: requestData }));
-        dispatch(getDocuments({ searchObject: requestData }));
+        dispatch(getDocumentIds({ searchObject: requestData }));
         navigate("/search/result");
     };
 

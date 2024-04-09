@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "./SummaryTable.css";
 import { CustomNextArrow, CustomPrevArrow } from "@components/";
-import IObjectSearchResponse from "../../../models/IObjectSearchResponse";
-import { DateTable } from "../../../utils/DateFormat";
+import IObjectSearchResponse from "@models/IObjectSearchResponse";
+import { DateTable } from "@utils/DateFormat";
 import { Spinner } from "@components/";
 
 interface SummaryTableProps {
@@ -18,22 +18,24 @@ type DateInfo = {
 };
 
 const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
-    let totalDocuments = periodList.data[0].data;
-    let riskFactors = periodList.data[1].data;
-
     let riskTotalDocs: Array<DateInfo> = [];
 
-    for (let dock of totalDocuments) {
-        for (let risk of riskFactors) {
-            if (
-                new Date(dock.date).getTime() === new Date(risk.date).getTime()
-            ) {
-                let periodInfo: DateInfo = {
-                    date: new Date(dock.date),
-                    total: dock.value,
-                    risk: risk.value,
-                };
-                riskTotalDocs.push(periodInfo);
+    if (periodList.data[0] && periodList.data[1]) {
+        let totalDocuments = periodList.data[0].data;
+        let riskFactors = periodList.data[1].data;
+
+        for (let dock of totalDocuments) {
+            for (let risk of riskFactors) {
+                if (
+                    new Date(dock.date).getTime() === new Date(risk.date).getTime()
+                ) {
+                    let periodInfo: DateInfo = {
+                        date: new Date(dock.date),
+                        total: dock.value,
+                        risk: risk.value,
+                    };
+                    riskTotalDocs.push(periodInfo);
+                }
             }
         }
     }
@@ -99,7 +101,7 @@ const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
 
     return (
         <>
-            <p>Найдено {riskTotalDocs.length} вариантов</p>
+            {!loading ? <p>Найдено {riskTotalDocs.length} вариантов</p> : null}
             <table className="summary-table">
                 <thead>
                     <tr>

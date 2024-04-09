@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getHistograms, getDocuments } from "./companyActions";
+import { getHistograms, getDocumentIds, getDocuments } from "./companyActions";
 
 const initialState = {
     loadingHistograms: false,
     loadingDocuments: false,
+    loadingDocumentIds: false,
     histograms: null,
-    documentIds: null,
-    documents: null,
+    documents: [],
     errorCompany: null,
 };
 
@@ -37,6 +37,26 @@ const companySlice = createSlice({
                 }
             )
 
+            // getDocumentIds
+            .addCase(
+                getDocumentIds.pending, (state) => {
+                    state.loadingDocumentIds = true;
+                    state.errorCompany = null;
+                }
+            )
+            .addCase(
+                getDocumentIds.fulfilled, (state, action) => {
+                    state.loadingDocumentIds = false;
+                    state.errorCompany = null;
+                }
+            )
+            .addCase(
+                getDocumentIds.rejected, (state, action) => {
+                    state.loadingDocumentIds = false;
+                    state.errorCompany = action.payload;
+                }
+            )
+
             // getDocuments
             .addCase(
                 getDocuments.pending, (state) => {
@@ -47,7 +67,7 @@ const companySlice = createSlice({
             .addCase(
                 getDocuments.fulfilled, (state, action) => {
                     state.loadingDocuments = false;
-                    state.documents = action.payload;
+                    state.documents = state.documents.concat(action.payload);
                     state.errorCompany = null;
                 }
             )
@@ -55,7 +75,6 @@ const companySlice = createSlice({
                 getDocuments.rejected, (state, action) => {
                     state.loadingDocuments = false;
                     state.errorCompany = action.payload;
-                    state.data = null;
                 }
             )
     },
