@@ -46,9 +46,10 @@ const SignInForm = () => {
 
     useEffect(() => {
         if (isAuth) {
-          navigate("/");
+            setPasswordError(false);
+            navigate("/");
         } else if (errorAuth) {
-          setPasswordError("Неправильный пароль");
+            setPasswordError("Неправильный пароль");
         }
     }, [isAuth, errorAuth]);
 
@@ -108,7 +109,7 @@ const SignInForm = () => {
                         disabled={!isFormActive}
                         onClick={handleSubmit}
                     />
-                    <a className="login__form__content__buttons__link" href="">
+                    <a className="login__form__content__buttons__link" href="#">
                         Восстановить пароль
                     </a>
                 </div>

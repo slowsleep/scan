@@ -28,6 +28,7 @@ const authSlice = createSlice({
                 signIn.fulfilled, (state) => {
                     state.loading = false;
                     state.isAuth = true;
+                    state.errorAuth = null;
                 }
             )
             .addCase(
@@ -47,6 +48,7 @@ const authSlice = createSlice({
                 checkAuth.fulfilled, (state) => {
                     state.loading = false;
                     state.isAuth = true;
+                    state.errorAuth = null;
                 }
             )
             .addCase(
