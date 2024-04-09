@@ -313,7 +313,12 @@ const SearchForm = () => {
                 </div>
             </div>
             <div className="search-form__right">
-                <CheckboxList onChange={checkboxesHandle} />
+                <CheckboxList
+                    className="search-form__right__checkbox-list"
+                    classLabel="search-form__right__label"
+                    classInput="search__input--border search-form__right__label__input"
+                    onChange={checkboxesHandle}
+                />
                 <div className="search-form__right__footer">
                     <Button
                         className="search-form__right__footer__button"

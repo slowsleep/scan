@@ -45,6 +45,8 @@ const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
         slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '10px 0 0',
     };
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -58,31 +60,35 @@ const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
 
         return () => {
             window.removeEventListener("resize", handleResize);
+        }
+    }, [])
 
-            // адаптивное изменение положения стрелки "назад" для карусели в таблице
-            let prev: HTMLElement | null =
-                document.querySelector(".slick-prev");
+    useEffect(() => {
+        // адаптивное изменение положения стрелки "назад" для карусели в таблице
+        let prev: HTMLElement | null =
+            document.querySelector(".slick-prev");
 
-            if (prev && windowWidth <= 1200) {
-                prev.style.left = `-30px`;
-            } else {
-                let thead: HTMLElement | null = document.querySelector(
-                    ".summary-table thead tr"
-                );
-                if (thead) {
-                    let theadWidth: number | null = thead.clientWidth;
+        if (prev && windowWidth <= 1200) {
+            prev.style.left = `-30px`;
+        } else {
+            let thead: HTMLElement | null = document.querySelector(
+                ".summary-table thead tr"
+            );
+            if (thead) {
+                let theadWidth: number | null = thead.clientWidth;
 
-                    if (theadWidth && prev) {
-                        prev.style.left = `-${theadWidth + 30}px`;
-                    }
+                if (theadWidth && prev) {
+                    prev.style.left = `-${theadWidth + 30}px`;
                 }
             }
-        };
-    }, [windowWidth]);
+        }
+
+    }, [windowWidth, riskTotalDocs])
 
     // адаптивная настройка выводимых элементов в карусели
     if (windowWidth <= 1200) {
         sliderSettings.slidesToShow = 1;
+        sliderSettings.centerMode = false;
     } else if (windowWidth > 1200) {
         if (riskTotalDocs.length < 8) {
             sliderSettings.slidesToShow = riskTotalDocs.length;

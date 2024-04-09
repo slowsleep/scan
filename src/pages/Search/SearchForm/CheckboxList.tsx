@@ -1,6 +1,13 @@
 import { LabelInput } from "@components/";
 
-const CheckboxList = ({ onChange }: { onChange: React.ChangeEventHandler<HTMLInputElement> }): React.ReactElement => {
+interface CheckboxListProps {
+    onChange: React.ChangeEventHandler<HTMLInputElement>,
+    className?: string,
+    classLabel?: string,
+    classInput?: string,
+}
+
+const CheckboxList = ({ onChange, classInput, className, classLabel }: CheckboxListProps): React.ReactElement => {
     interface Checkbox {
         title: string;
         name: string;
@@ -38,11 +45,11 @@ const CheckboxList = ({ onChange }: { onChange: React.ChangeEventHandler<HTMLInp
     ];
 
     return (
-        <>
+        <div className={className}>
             {checkboxList.map(({ title, name }) => (
                 <LabelInput
-                    className="search-form__right__label"
-                    classInput="search__input--border search-form__right__label__input"
+                    className={classLabel}
+                    classInput={classInput}
                     type="checkbox"
                     label={title}
                     key={name}
@@ -50,7 +57,7 @@ const CheckboxList = ({ onChange }: { onChange: React.ChangeEventHandler<HTMLInp
                     onChange={onChange}
                 />
             ))}
-        </>
+        </div>
     );
 };
 
