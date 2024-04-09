@@ -11,6 +11,7 @@ const SearchResult = () => {
     const [histograms, setHistograms] = useState<IObjectSearchResponse>({data: []} as IObjectSearchResponse);
     const [documents, setDocuments] = useState<IDocumentResponse[]>([] as IDocumentResponse[]);
     const { histograms: companyHistograms, documents: companyDocuments, loadingHistograms } = useSelector((state: any) => state.company)
+    const [loadedDocumentsCount, setLoadedDocumentsCount] = useState(10);
 
     useEffect(() => {
         if (companyHistograms) {
@@ -52,17 +53,18 @@ const SearchResult = () => {
                 <h2>Список документов</h2>
                 <div className="search-output__doclist__items">
                     {documents.length === 0 ? <p>Ничего не нашли</p> :
-                        documents.map((item) => (
+                        documents.slice(0, loadedDocumentsCount).map((item) => (
                             <DocumentСard key={item.ok.id} documentItem={item.ok} />
                         ))
                     }
                 </div>
             </div>
             <Button
-                className="search-output__btn-view-more"
+                className={"search-output__btn-view-more" + (loadedDocumentsCount >= documents.length ? " search-output__btn-view-more--hidden" : "")}
                 title="Показать больше"
                 color="blue"
                 size="large"
+                onClick={() => setLoadedDocumentsCount(loadedDocumentsCount + 10)}
             />
         </div>
     );
