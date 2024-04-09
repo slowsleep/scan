@@ -22,8 +22,8 @@ const SearchForm = () => {
     const [inn, setInn] = useState<string>("");
     const [tonality, setTonality] = useState<string>("any");
     const [docCount, setDocCount] = useState<number>(0);
-    const [dateTo, setDateTo] = useState<Date|null>(null);
-    const [dateFrom, setDateFrom] = useState<Date|null>(null);
+    const [dateTo, setDateTo] = useState<Date | null>(null);
+    const [dateFrom, setDateFrom] = useState<Date | null>(null);
     const [isActiveForm, setIsActiveForm] = useState<boolean>(false);
 
     const [innError, setInnError] = useState<boolean | string>(false);
@@ -117,8 +117,11 @@ const SearchForm = () => {
         if (!e) {
             setDateFromError(true);
             setDatesError("Обязательные поля");
-        } else if (dateTo && dateFrom !== null) {
-            if (dateFrom.getTime() > dateTo.getTime()) {
+        } else if (dateFrom !== null) {
+            if (
+                (dateTo && dateFrom.getTime() > dateTo.getTime()) ||
+                dateFrom.getTime() > new Date().getTime()
+            ) {
                 setDateFromError(true);
                 setDatesError("Введите корректные данные");
             } else {
@@ -138,8 +141,11 @@ const SearchForm = () => {
         if (!e) {
             setDateToError(true);
             setDatesError("Обязательные поля");
-        } else if (dateFrom && dateTo !== null) {
-            if (dateTo.getTime() < dateFrom.getTime()) {
+        } else if (dateTo !== null) {
+            if (
+                (dateFrom && dateTo.getTime() < dateFrom.getTime()) ||
+                dateTo.getTime() > new Date().getTime()
+            ) {
                 setDateToError(true);
                 setDatesError("Введите корректные данные");
             } else {
@@ -153,8 +159,15 @@ const SearchForm = () => {
 
     useEffect(() => {
         if (
-            inn && tonality && docCount && dateFrom && dateTo &&
-            !innError && !docCountError && !dateFromError && !dateToError
+            inn &&
+            tonality &&
+            docCount &&
+            dateFrom &&
+            dateTo &&
+            !innError &&
+            !docCountError &&
+            !dateFromError &&
+            !dateToError
         ) {
             setIsActiveForm(true);
         } else {
@@ -231,10 +244,9 @@ const SearchForm = () => {
             },
         };
 
-        dispatch(getHistograms({searchObject: requestData}));
-        dispatch(getDocuments({searchObject: requestData}));
+        dispatch(getHistograms({ searchObject: requestData }));
+        dispatch(getDocuments({ searchObject: requestData }));
         navigate("/search/result");
-
     };
 
     return (
