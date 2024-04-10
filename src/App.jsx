@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import Search from "./pages/Search/Search";
 import SearchResult from "./pages/SearchResult/SearchResult";
+import NotFound from "./pages/NotFound/NotFound";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { checkAuth } from "./features/auth/authActions";
@@ -15,6 +16,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path="login" element={<SignIn/>}></Route>
         <Route path="search" element={<RequireAuth><Search/></RequireAuth>}></Route>
         <Route path="search/result" element={<RequireAuth><SearchResult/></RequireAuth>}></Route>
+        <Route path="*" element={<NotFound/>}></Route>
     </Route>
 ));
 
