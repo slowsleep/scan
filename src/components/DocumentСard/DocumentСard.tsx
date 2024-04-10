@@ -2,7 +2,7 @@ import { Button } from "@components/";
 import "./DocumentСard.css";
 import { ScanDoc } from "@mytypes/";
 import { useEffect, useState, useRef } from "react";
-import { DateTable } from "../../utils/DateFormat";
+import { DateTable } from "@utils/DateFormat";
 import { Link } from "react-router-dom";
 import { wordFormat } from "@utils/WordFormat";
 

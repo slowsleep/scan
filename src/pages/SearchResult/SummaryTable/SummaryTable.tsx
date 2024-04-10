@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "./SummaryTable.css";
-import { CustomNextArrow, CustomPrevArrow } from "@components/";
+import { CustomNextArrow, CustomPrevArrow, Spinner } from "@components/";
 import IObjectSearchResponse from "@models/IObjectSearchResponse";
 import { DateTable } from "@utils/DateFormat";
-import { Spinner } from "@components/";
 
 interface SummaryTableProps {
     periodList: IObjectSearchResponse;

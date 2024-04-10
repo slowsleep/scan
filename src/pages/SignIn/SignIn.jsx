@@ -1,4 +1,4 @@
-import key from "../../assets/img/key.png";
+import key from "@assets/img/key.png";
 import "./SignIn.css";
 import SignInForm from "./SignInForm/SignInForm";
 
