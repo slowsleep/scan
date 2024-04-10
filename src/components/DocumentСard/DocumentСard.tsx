@@ -66,11 +66,8 @@ const DocumentСard = ({ documentItem }: { documentItem: ScanDoc }) => {
                     if (imageRef.current && imgURLs[0]) {
                         imageRef.current.src = imgURLs[0]
                     }
-                } else {
-                    console.log("URL не найдены.");
                 }
             } else {
-                console.log("Тег <data> не найден в строке.");
                 titlePart = titleFromXML;
                 contentPart = contentFromXML;
             }
