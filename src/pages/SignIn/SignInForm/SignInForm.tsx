@@ -10,13 +10,13 @@ import { signIn } from "@features/auth/authActions";
 import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
-    const [login, setLogin] = useState("");
-    const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
-    const [isFormActive, setIsFormActive] = useState(false);
+    const [login, setLogin] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [loginError, setLoginError] = useState<boolean | string>(false);
+    const [passwordError, setPasswordError] = useState<boolean | string>(false);
+    const [isFormActive, setIsFormActive] = useState<boolean>(false);
 
-    const { isAuth, errorAuth } = useSelector((state) => state.auth);
+    const { isAuth, errorAuth } = useSelector((state: any) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
