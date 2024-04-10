@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "./SummaryTable.css";
 import { CustomNextArrow, CustomPrevArrow, Spinner } from "@components/";
 import { IObjectSearchResponse } from "@models/IObjectSearchResponse";
-import { dateFormatDots } from "@utils/DateFormat";
+import { dateFormatDots } from "@utils/dateFormat";
 
 interface SummaryTableProps {
     periodList: IObjectSearchResponse;

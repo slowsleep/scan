@@ -10,7 +10,7 @@ import {
     Select,
 } from "@components/";
 import { IObjectSearchRequest } from "@models/IObjectSearchRequest";
-import { getFullFormatDate } from "@utils/DateFormat";
+import { getFullFormatDate } from "@utils/dateFormat";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getHistograms, getDocumentIds } from "@features/company/companyActions";

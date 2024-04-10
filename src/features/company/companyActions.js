@@ -1,6 +1,6 @@
 import api from "@api/";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { docIdsToArrIds } from "@utils/DocumentsDataFormat";
+import { docIdsToArrIds } from "@utils/documentsDataFormat";
 
 export const getHistograms = createAsyncThunk(
     "company/getHistograms",

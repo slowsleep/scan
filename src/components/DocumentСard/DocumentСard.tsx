@@ -2,9 +2,9 @@ import { Button } from "@components/";
 import "./DocumentСard.css";
 import { ScanDoc } from "@mytypes/";
 import { useEffect, useState, useRef } from "react";
-import { dateFormatDots } from "@utils/DateFormat";
+import { dateFormatDots } from "@utils/dateFormat";
 import { Link } from "react-router-dom";
-import { wordFormat } from "@utils/WordFormat";
+import { wordFormat } from "@utils/wordFormat";
 
 const DocumentСard = ({ documentItem }: { documentItem: ScanDoc }) => {
     const [haveImage, setHaveImage] = useState(false);
