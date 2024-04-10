@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "./SummaryTable.css";
 import { CustomNextArrow, CustomPrevArrow, Spinner } from "@components/";
 import { IObjectSearchResponse } from "@models/IObjectSearchResponse";
-import { DateTable } from "@utils/DateFormat";
+import { dateFormatDots } from "@utils/DateFormat";
 
 interface SummaryTableProps {
     periodList: IObjectSearchResponse;
@@ -115,8 +115,8 @@ const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
                     ) : (
                         <Slider {...sliderSettings}>
                             {riskTotalDocs.map((item) => (
-                                <tr key={DateTable(item.date)}>
-                                    <td>{DateTable(item.date)}</td>
+                                <tr key={dateFormatDots(item.date)}>
+                                    <td>{dateFormatDots(item.date)}</td>
                                     <td>{item.total}</td>
                                     <td>{item.risk}</td>
                                 </tr>

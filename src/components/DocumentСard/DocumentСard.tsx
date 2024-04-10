@@ -2,7 +2,7 @@ import { Button } from "@components/";
 import "./DocumentСard.css";
 import { ScanDoc } from "@mytypes/";
 import { useEffect, useState, useRef } from "react";
-import { DateTable } from "@utils/DateFormat";
+import { dateFormatDots } from "@utils/DateFormat";
 import { Link } from "react-router-dom";
 import { wordFormat } from "@utils/WordFormat";
 
@@ -92,7 +92,7 @@ const DocumentСard = ({ documentItem }: { documentItem: ScanDoc }) => {
     return (
         <div className="document-card">
             <div className="document-card__header">
-                {DateTable(new Date(documentItem.issueDate))}
+                {dateFormatDots(new Date(documentItem.issueDate))}
                 <a href={documentItem.url}>{documentItem.source.name}</a>
             </div>
             <div className="document-card__content">

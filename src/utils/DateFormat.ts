@@ -14,7 +14,7 @@ export const getFullFormatDate = (date: Date): string => {
     return fullDate;
 };
 
-export const DateTable = (date:Date): string => {
+export const dateFormatDots = (date:Date): string => {
 
     let fullDate = `${numWithZero(date.getDate())}.${numWithZero(
         date.getMonth() + 1
