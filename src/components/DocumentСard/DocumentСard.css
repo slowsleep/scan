@@ -23,13 +23,20 @@
     text-decoration: underline;
 }
 
-.document-card__content h1,
-.document-card__content h2 {
+.document-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.document-card__content__body h1,
+.document-card__content__body h2 {
     font-family: "Inter" !important;
     font-size: 26px !important;
 }
 
-.document-card__content__type {
+.document-card__content__body__type {
     display: inline;
     border-radius: 5px;
     padding: .2em .5em;
@@ -37,37 +44,30 @@
     color: black !important;
 }
 
-.document-card__content__type--tech {
+.document-card__content__body__type--tech {
     background: rgba(255, 182, 79, 1);
 }
 
-.document-card__content__type--anonce {
+.document-card__content__body__type--anonce {
     background-color: rgb(108, 175, 136)
 }
 
-.document-card__content__type--digest {
+.document-card__content__body__type--digest {
     background-color: rgb(136, 109, 200);
 }
 
-.document-card__footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.document-card__content__body > p {
     color: gray;
 }
 
-.document-card__content > p {
-    color: gray;
-}
-
-.document-card__content__image-box {
+.document-card__content__body__image-box {
     position: relative;
     overflow: hidden;
     height: 158px;
     border-radius: 10px;
 }
 
-.document-card__content__image-box__image {
+.document-card__content__body__image-box__image {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -76,7 +76,23 @@
     width: 100%;
 }
 
-.document-card__footer__word-count {
+.document-card__content__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: gray;
+}
+
+.document-card__content__footer__link {
+    width: 40%;
+}
+
+.document-card__content__footer__button {
+    font-size: 16px;
+    width: 100%;
+}
+
+.document-card__content__footer__word-count {
     display: flex;
     align-items: end;
     padding: 0;
@@ -89,15 +105,27 @@
         padding: 1em 1.5em 1em 2em;
     }
 
-    .document-card__content>h1 {
+    .document-card__content__body > h1 {
         font-size: 19px;
     }
 
-    .document-card__content__type {
+    .document-card__content__body__type {
         font-size: 10px;
     }
 
-    .document-card__content>p {
+    .document-card__content__body > p {
         font-size: 12px;
+    }
+
+    .document-card__content__body__title {
+        font-size: 19px !important;
+    }
+
+    .document-card__content__footer__link {
+        width: 90%;
+    }
+
+    .document-card__content__footer__button {
+        font-size: 14px;
     }
 }

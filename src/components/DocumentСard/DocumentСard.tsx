@@ -95,46 +95,49 @@ const DocumentСard = ({ documentItem }: { documentItem: ScanDoc }) => {
                 <a href={documentItem.url}>{documentItem.source.name}</a>
             </div>
             <div className="document-card__content">
-                <h1
-                    ref={titleRef}
-                    className="document-card__content__title"
-                ></h1>
+                <div className="document-card__content__body">
+                    <h1
+                        ref={titleRef}
+                        className="document-card__content__body__title"
+                    ></h1>
 
-                {documentItem.attributes.isTechNews ? (
-                    <p className="document-card__content__type document-card__content__type--tech">
-                        Технические новости
+                    {documentItem.attributes.isTechNews ? (
+                        <p className="document-card__content__body__type document-card__content__body__type--tech">
+                            Технические новости
+                        </p>
+                    ) : documentItem.attributes.isAnnouncement ? (
+                        <p className="document-card__content__body__type document-card__content__body__type--anonce">
+                            Анонсы и события
+                        </p>
+                    ) : documentItem.attributes.isDigest ? (
+                        <p className="document-card__content__body__type document-card__content__body__type--digest">
+                            сводки новостей
+                        </p>
+                    ) : null}
+                    {haveImage ?
+                        <div className="document-card__content__body__image-box">
+                            <img ref={imageRef} className="document-card__content__body__image-box__image" alt="" />
+                        </div>
+                        : null
+                    }
+                    <p
+                        ref={contentRef}
+                        className="document-card__content__body__text"
+                    ></p>
+                </div>
+                <div className="document-card__content__footer">
+                    <Link to={documentItem.url} className="document-card__content__footer__link">
+                        <Button
+                            className="document-card__content__footer__button"
+                            title="Читать в источнике"
+                            color="light-green"
+                            size="large"
+                        />
+                    </Link>
+                    <p className="document-card__content__footer__word-count">
+                        {documentItem.attributes.wordCount}
                     </p>
-                ) : documentItem.attributes.isAnnouncement ? (
-                    <p className="document-card__content__type document-card__content__type--anonce">
-                        Анонсы и события
-                    </p>
-                ) : documentItem.attributes.isDigest ? (
-                    <p className="document-card__content__type document-card__content__type--digest">
-                        сводки новостей
-                    </p>
-                ) : null}
-                {haveImage ?
-                    <div className="document-card__content__image-box">
-                        <img ref={imageRef} className="document-card__content__image-box__image" alt="" />
-                    </div>
-                    : null
-                }
-                <p
-                    ref={contentRef}
-                    className="document-card__content__text"
-                ></p>
-            </div>
-            <div className="document-card__footer">
-                <Link to={documentItem.url}>
-                    <Button
-                        title="Читать в источнике"
-                        color="light-green"
-                        size="large"
-                    />
-                </Link>
-                <p className="document-card__footer__word-count">
-                    {documentItem.attributes.wordCount}
-                </p>
+                </div>
             </div>
         </div>
     );
