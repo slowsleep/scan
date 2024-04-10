@@ -4,6 +4,7 @@ import { ScanDoc } from "@mytypes/";
 import { useEffect, useState, useRef } from "react";
 import { DateTable } from "../../utils/DateFormat";
 import { Link } from "react-router-dom";
+import { wordFormat } from "@utils/WordFormat";
 
 const DocumentСard = ({ documentItem }: { documentItem: ScanDoc }) => {
     const [haveImage, setHaveImage] = useState(false);
@@ -135,7 +136,7 @@ const DocumentСard = ({ documentItem }: { documentItem: ScanDoc }) => {
                         />
                     </Link>
                     <p className="document-card__content__footer__word-count">
-                        {documentItem.attributes.wordCount}
+                        {documentItem.attributes.wordCount} {documentItem.attributes.wordCount && wordFormat(documentItem.attributes.wordCount)}
                     </p>
                 </div>
             </div>
