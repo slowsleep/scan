@@ -91,6 +91,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 1em 0;
 }
 
 .burger-menu__header__close {
