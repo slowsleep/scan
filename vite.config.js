@@ -19,6 +19,7 @@ export default defineConfig({
       "@models": `${path.resolve(__dirname, "/src/models")}`,
       "@features": `${path.resolve(__dirname, "/src/features")}`,
       "@utils": `${path.resolve(__dirname, "/src/utils")}`,
+      "@pages": `${path.resolve(__dirname, "/src/pages")}`,
     },
   },
 });

@@ -7,7 +7,7 @@ interface SpinnerProps {
     size?: "md";
 }
 
-export const Spinner = ({ className, text, size }: SpinnerProps) => {
+const Spinner = ({ className, text, size }: SpinnerProps) => {
     return (
         <div className="spinner-wrapper">
             <img
@@ -24,3 +24,5 @@ export const Spinner = ({ className, text, size }: SpinnerProps) => {
         </div>
     );
 };
+
+export { Spinner };

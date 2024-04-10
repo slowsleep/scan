@@ -113,4 +113,4 @@ const SearchResult = () => {
     );
 };
 
-export default SearchResult;
+export { SearchResult };

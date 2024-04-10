@@ -1,11 +1,7 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import { RequireAuth } from "./hoc/RequireAuth";
 import { Layout } from "./components/";
-import Home from "./pages/Home/Home";
-import SignIn from "./pages/SignIn/SignIn";
-import Search from "./pages/Search/Search";
-import SearchResult from "./pages/SearchResult/SearchResult";
-import NotFound from "./pages/NotFound/NotFound";
+import { Home, SignIn, Search, SearchResult, NotFound } from "@pages/";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { checkAuth } from "./features/auth/authActions";
