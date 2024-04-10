@@ -2,7 +2,7 @@ import { DateInterval, SearchContext } from '@mytypes/Search';
 import { Attributes } from "@mytypes/Filter/Attributes";
 
 // for POST /api/v1/objectsearch/histograms
-export default interface IObjectSearchRequest {
+export interface IObjectSearchRequest {
     intervalType: string,
     histogramTypes: string|string[],
     issueDateInterval: DateInterval,

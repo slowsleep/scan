@@ -4,8 +4,8 @@ import "./SearchResult.css";
 import womanTarget from "@assets/img/woman-target.png";
 import SummaryTable from "./SummaryTable/SummaryTable";
 import { Button, DocumentСard, Spinner } from "@components/";
-import IObjectSearchResponse from "@models/IObjectSearchResponse";
-import IDocumentResponse from "@models/IDocumentResponse";
+import { IObjectSearchResponse } from "@models/IObjectSearchResponse";
+import { IDocumentResponse } from "@models/IDocumentResponse";
 
 const SearchResult = () => {
     const [histograms, setHistograms] = useState<IObjectSearchResponse>({

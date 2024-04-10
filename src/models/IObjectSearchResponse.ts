@@ -1,5 +1,5 @@
 import { HistogramData } from "@mytypes/Analytics/HistogramData";
 
-export default interface IObjectSearchResponse {
+export interface IObjectSearchResponse {
     data: HistogramData[],
 }

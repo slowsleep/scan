@@ -1,3 +1,3 @@
-export default interface IDocumentsIdsRequest {
+export interface IDocumentsIdsRequest {
     ids: string[],
 }

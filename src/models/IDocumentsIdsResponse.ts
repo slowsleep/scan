@@ -1,6 +1,6 @@
 import { SearchResultItem } from "@mytypes/SearchResultItem";
 
-export default interface IDocumentsIdsResponse {
+export interface IDocumentsIdsResponse {
     items: SearchResultItem[],
     mappings?: any,
 }

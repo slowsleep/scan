@@ -1,4 +1,4 @@
-import IDocumentsIdsResponse from "@models/IDocumentsIdsResponse";
+import { IDocumentsIdsResponse } from "@models/IDocumentsIdsResponse";
 
 export function docIdsToArrIds(docsIds: IDocumentsIdsResponse) {
     let res: string[] = [];

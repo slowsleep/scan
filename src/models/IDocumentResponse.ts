@@ -1,5 +1,5 @@
 import { ScanDoc } from "@mytypes/ScanDoc";
 
-export default interface IDocumentResponse {
+export interface IDocumentResponse {
     ok: ScanDoc,
 }

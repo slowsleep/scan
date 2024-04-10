@@ -9,7 +9,7 @@ import {
     LabelInput,
     Select,
 } from "@components/";
-import IObjectSearchRequest from "@models/IObjectSearchRequest";
+import { IObjectSearchRequest } from "@models/IObjectSearchRequest";
 import { getFullFormatDate } from "@utils/DateFormat";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

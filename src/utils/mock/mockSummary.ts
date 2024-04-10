@@ -1,4 +1,4 @@
-import IObjectSearchResponse from "../../models/IObjectSearchResponse";
+import { IObjectSearchResponse } from "../../models/IObjectSearchResponse";
 
 export const mockSummary: IObjectSearchResponse = {
     data: [
