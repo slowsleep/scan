@@ -162,4 +162,14 @@
     .search-form__right__checkbox-list {
         display: none;
     }
+
+    .input-date {
+        width: inherit;
+    }
+
+    .react-datepicker__input-container {
+        width: -moz-available;
+        width: -webkit-fill-available;
+    }
+
 }
