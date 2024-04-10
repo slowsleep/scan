@@ -17,6 +17,17 @@ type DateInfo = {
 };
 
 const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
+    let sliderSettings = {
+        infinite: true,
+        speed: 500,
+        slidesToScroll: 1,
+        nextArrow: <CustomNextArrow />,
+        prevArrow: <CustomPrevArrow />,
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '10px 0 0',
+    };
+
     let riskTotalDocs: Array<DateInfo> = [];
 
     if (periodList.data[0] && periodList.data[1]) {
@@ -37,18 +48,11 @@ const SummaryTable = ({ periodList, loading }: SummaryTableProps) => {
                 }
             }
         }
-    }
 
-    let sliderSettings = {
-        infinite: true,
-        speed: 500,
-        slidesToScroll: 1,
-        nextArrow: <CustomNextArrow />,
-        prevArrow: <CustomPrevArrow />,
-        slidesToShow: 1,
-        centerMode: true,
-        centerPadding: '10px 0 0',
-    };
+        if (riskTotalDocs.length === 1) {
+            sliderSettings.infinite = false;
+        }
+    }
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
