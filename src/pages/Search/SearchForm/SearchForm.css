@@ -172,4 +172,8 @@
         width: -webkit-fill-available;
     }
 
+    .search-form__left__label-input-count > .search-form__left__error {
+        width: 100%;
+    }
+
 }
